@@ -1,0 +1,49 @@
+Layout: Matrix
+Rows: 7
+Columns: 12
+X Spacing: 2.9
+Y Spacing: 1.4
+Starting X: 0.3
+Starting Y: 3.175
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT  STOCK 12" X 36"
+CUT ON FIBER 13"
+CUT PSA DOWN / CHANGE HEAD
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

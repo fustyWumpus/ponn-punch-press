@@ -1,0 +1,50 @@
+Layout: Staggered
+Rows: 5
+Columns: 31
+X Spacing: 0.79
+Y Spacing: 1.8
+Starting X: 8.5
+Starting Y: 4.2
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: SHIM STOCK  10 X 25
+BROWN PN-112960-10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

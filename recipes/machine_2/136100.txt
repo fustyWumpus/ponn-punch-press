@@ -1,0 +1,50 @@
+Layout: Matrix
+Rows: 9
+Columns: 56
+X Spacing: 0.63
+Y Spacing: 1.265
+Starting X: 0.3
+Starting Y: 1.5
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT  STOCK 12 1/2" X 36"
+CUT ON FIBER 13"
+PROG. OK
+CHECK STARTING Y
+CUT STOCK AMD LAY OUT TO COMPENSATE FOR SHRINKING PARTS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

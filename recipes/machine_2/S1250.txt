@@ -1,0 +1,46 @@
+Layout: Staggered
+Rows: 9
+Columns: 26
+X Spacing: 1.32
+Y Spacing: 1.37
+Starting X: 0.3
+Starting Y: 2.04
+Vacuum On Duration: 7
+Vacuum Off Duration: 7
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13 1/2" ON BOTTOM AND CARDBOARD 13" ON TOP/ FOR P/N 55-181 USE SHIM FOR RUBBER IN SHIM BAG 
+INSIDE CABINET/PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

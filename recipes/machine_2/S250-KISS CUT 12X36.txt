@@ -1,0 +1,44 @@
+Layout: Matrix
+Rows: 24
+Columns: 112
+X Spacing: 0.32
+Y Spacing: 0.47
+Starting X: 0.3
+Starting Y: 1.36
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+PROG. OK
+KISS CUT PROGRAM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+Layout: Staggered
+Rows: 26
+Columns: 86
+X Spacing: 0.415
+Y Spacing: 0.415
+Starting X: 0.3
+Starting Y: 3.4
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 36"
+CUT ON CARDBOARD 11"
+CUT 2 THICK USE .340 DIE ON DIEBOARD .345 die
+0021-2459-003 cardboard use tube parts go up into cup .345 die
+CUT 2 THICK 10X36
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

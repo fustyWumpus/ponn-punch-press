@@ -1,0 +1,76 @@
+Layout: Matrix
+Rows: 1
+Columns: 46
+X Spacing: 0.775
+Y Spacing: 1.927
+Starting X: 0.3
+Starting Y: 1.59
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+TURN STOCK AROUND AND CUT SINGLE ROW
+PROG. OK
+USE BIG HOLDER/SILICONE/SPEED13
+DIE ON TAN CABINET
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

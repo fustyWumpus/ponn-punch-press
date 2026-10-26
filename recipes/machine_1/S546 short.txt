@@ -1,0 +1,32 @@
+Layout: Staggered
+Rows: 20
+Columns: 51
+X Spacing: 0.646
+Y Spacing: 0.656
+Starting X: 0.3
+Starting Y: 1.7
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13" / ONE TIME ONLY
+FOR .546 DISC, CUT WITH NO KNOCKOUT/ USE .540 DIE ON DIEBOARD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

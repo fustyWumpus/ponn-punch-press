@@ -1,0 +1,32 @@
+Layout: Staggered
+Rows: 23
+Columns: 72
+X Spacing: 0.47
+Y Spacing: 0.47
+Starting X: 0.2
+Starting Y: 3.41
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 34 1/2"
+CUT ON CARDBOARD 11"
+FOR P/N 004017-001 USE .400 X .175 DIE/ HOLD CENTERS DOWN CUT SHINY SIDE DOWN/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

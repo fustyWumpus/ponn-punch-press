@@ -1,0 +1,17 @@
+# Virtual environments (hundreds of MB; recreate with the steps in HANDOFF.md)
+.venv/
+.venv-x64/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Build output (regenerate with PyInstaller + Inno Setup, see HANDOFF.md)
+build/
+dist/
+
+# Local scratch/diagnostic scripts and their logs
+scratch_*
+*.log

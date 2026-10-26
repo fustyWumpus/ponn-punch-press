@@ -1,0 +1,28 @@
+Layout: Staggered
+Rows: 14
+Columns: 43
+X Spacing: 0.815
+Y Spacing: 0.815
+Starting X: 0.2
+Starting Y: 2.76
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 11" X 36"
+CUT ON FIBER 12"
+FOR P/N V24956 USE DIE IN LOC.
+GR-3-C-6/ KEEP CENTERS DOWN
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+

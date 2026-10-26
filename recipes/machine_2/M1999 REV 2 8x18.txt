@@ -1,0 +1,50 @@
+Layout: Matrix
+Rows: 6
+Columns: 14
+X Spacing: 1.27
+Y Spacing: 1.295
+Starting X: 0.46
+Starting Y: 5.22
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 8" X 18"
+CUT ON FIBER 13"
+TO CLEAN OUT CENTERS STAPLE 4 SHEETS TOGETHER AND PUSH OUT ID'S ON GREEN PAD WITH .307 PIN PSA DOWN PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

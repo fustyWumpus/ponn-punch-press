@@ -1,0 +1,40 @@
+Layout: Staggered
+Rows: 10
+Columns: 10
+X Spacing: 0.675
+Y Spacing: 0.7
+Starting X: 2.81
+Starting Y: 3.89
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 6 3/4 X 8 USE TEMPLATE 
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+Layout: Staggered
+Rows: 26
+Columns: 73
+X Spacing: 0.485
+Y Spacing: 0.485
+Starting X: 0.2
+Starting Y: 1.64
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: 
+CUT STOCK 12 IN.
+
+
+
+
+
+
+
+
+
+

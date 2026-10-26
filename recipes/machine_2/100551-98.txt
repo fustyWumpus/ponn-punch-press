@@ -1,0 +1,36 @@
+Layout: Matrix
+Rows: 18
+Columns: 15
+X Spacing: 0.77
+Y Spacing: 0.595
+Starting X: 12.57
+Starting Y: 1.6
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: STOCK 11 1/2" X 11 1/2"
+FIBER 13"
+p/n- 100551-98
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

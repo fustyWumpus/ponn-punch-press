@@ -1,0 +1,57 @@
+Layout: Matrix
+Rows: 11
+Columns: 23
+X Spacing: 1.517
+Y Spacing: 0.809
+Starting X: 0.3
+Starting Y: 3.6
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 36"
+CUT ON FIBER 11" 
+USE 1" HOLDER TO MOUNT DIE WITH PSA/ PROG OK
+
+
+
+
+CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

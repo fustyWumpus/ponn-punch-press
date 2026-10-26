@@ -1,0 +1,66 @@
+Layout: Staggered
+Rows: 24
+Columns: 21
+X Spacing: 0.52
+Y Spacing: 0.52
+Starting X: 12.39
+Starting Y: 0.450
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: gold spacer normal holder
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

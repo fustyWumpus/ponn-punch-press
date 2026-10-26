@@ -1,0 +1,34 @@
+Layout: Staggered
+Rows: 21
+Columns: 41
+X Spacing: 0.44
+Y Spacing: 0.44
+Starting X: 8.42
+Starting Y: 4.48
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 9" X 18"
+CUT ON CARDBOARD 13"
+PROG. OK
+SHORT STOCK PN-5186-0372
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

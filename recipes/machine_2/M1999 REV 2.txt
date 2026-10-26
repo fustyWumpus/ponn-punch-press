@@ -1,0 +1,46 @@
+Layout: Staggered
+Rows: 9
+Columns: 26
+X Spacing: 1.27
+Y Spacing: 1.4
+Starting X: 0.46
+Starting Y: 1.590
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 34"
+CUT ON FIBER 13"
+TO CLEAN OUT CENTERS STAPLE 4 SHEETS TOGETHER AND PUSH OUT ID'S ON GREEN PAD WITH .307 PIN PSA DOWN PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

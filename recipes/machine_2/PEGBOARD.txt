@@ -1,0 +1,45 @@
+Layout: Matrix
+Rows: 9
+Columns: 29
+X Spacing: 1.25
+Y Spacing: 1.25
+Starting X: 1.08
+Starting Y: 2.09
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+PEGBAORD TEST
+.255 DIE
+CUT ON FIBER SPEED 7-8
+SET STOCK TO GAGE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

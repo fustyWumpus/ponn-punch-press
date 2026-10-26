@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Ponn Punch Press (simulated, no hardware)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "ponn_punch_press.app",
+            "args": ["--simulate"],
+            "python": "${workspaceFolder}/.venv-x64/Scripts/python.exe",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Ponn Punch Press (REAL controllers)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "ponn_punch_press.app",
+            "python": "${workspaceFolder}/.venv-x64/Scripts/python.exe",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PATH": "C:\\Program Files\\Galil\\gclib\\bin;${env:PATH}"
+            }
+        }
+    ]
+}

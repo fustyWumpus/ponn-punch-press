@@ -1,0 +1,12 @@
+Layout: Staggered
+Rows: 2
+Columns: 2
+X Spacing: 1
+Y Spacing: 1
+Starting X: 3
+Starting Y: 3
+Vacuum On Duration: 2
+Vacuum Off Duration: 8
+Speed: 100
+Comments: 
+

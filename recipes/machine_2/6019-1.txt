@@ -1,0 +1,41 @@
+Layout: Staggered
+Rows: 16
+Columns: 30
+X Spacing: 0.4
+Y Spacing: 0.4
+Starting X: 4.400
+Starting Y: 4.26
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: 
+STOCK 6x 12 1/2
+FIBER 11
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

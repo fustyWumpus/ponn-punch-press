@@ -1,0 +1,45 @@
+Layout: Staggered
+Rows: 10
+Columns: 56
+X Spacing: 0.37
+Y Spacing: 0.37
+Starting X: 6.67
+Starting Y: 9.16
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK4" X 21"
+CUT ON FIBER
+300disc kiss cut bae systems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

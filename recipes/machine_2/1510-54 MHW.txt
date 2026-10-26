@@ -1,0 +1,48 @@
+Layout: Matrix
+Rows: 13
+Columns: 21
+X Spacing: 0.55
+Y Spacing: 0.805
+Starting X: 12.31
+Starting Y: 1.8
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: 
+MOVE CLAMPS TO 12 INCHES APART CARDBOARD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

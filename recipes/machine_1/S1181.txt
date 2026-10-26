@@ -1,0 +1,33 @@
+Layout: Staggered
+Rows: 10
+Columns: 28
+X Spacing: 1.261
+Y Spacing: 1.261
+Starting X: 0.3
+Starting Y: 2.04
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 65
+Comments: CUT STOCK 12" X 36"
+CUT ON CARDBOARD 13"
+CUT 2 THICK/ WIPE POWDER OFF STOCK / SPEED 18.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

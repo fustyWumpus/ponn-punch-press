@@ -1,0 +1,24 @@
+Layout: Staggered
+Rows: 10
+Columns: 28
+X Spacing: 1.26
+Y Spacing: 1.260
+Starting X: 0.3
+Starting Y: 1.75
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12 1/2 X 36
+CUT ON CARDBOARD
+
+
+
+
+
+
+
+
+
+
+
+

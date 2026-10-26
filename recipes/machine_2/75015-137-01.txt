@@ -1,0 +1,49 @@
+Layout: Staggered
+Rows: 20
+Columns: 26
+X Spacing: 0.33
+Y Spacing: 0.33
+Starting X: 2.790
+Starting Y: 2.92
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: FOR 75015-137-01
+STOCK 9 X 7
+USE TEMPLATE
+FIBER 13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

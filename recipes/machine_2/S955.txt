@@ -1,0 +1,27 @@
+Layout: Staggered
+Rows: 12
+Columns: 17
+X Spacing: 1.025
+Y Spacing: 1.025
+Starting X: 9.4
+Starting Y: 2
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 18"
+CUT ON FIBER 13"
+P/N-BCG12-6RB2
+
+
+
+
+
+
+
+
+
+
+
+
+
+

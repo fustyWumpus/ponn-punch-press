@@ -1,0 +1,56 @@
+Layout: Staggered
+Rows: 47
+Columns: 41
+X Spacing: 0.28
+Y Spacing: 0.28
+Starting X: 12.6
+Starting Y: 0.575
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: USE .205 DIE ON DIEBOARD
+USE TEMPLATE
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

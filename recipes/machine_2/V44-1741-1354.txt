@@ -1,0 +1,59 @@
+Layout: Staggered
+Rows: 10
+Columns: 27
+X Spacing: 1.295
+Y Spacing: 1.285
+Starting X: 0.3
+Starting Y: 1.92
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12' X 36"
+CUT ON FIBER 13" / PROG. OK
+USE O.D. IN LOC. GR-9-B-4
+USE .525 I.D. ON DIEBOARD
+HOLD DOWN CENTERS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

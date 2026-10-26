@@ -1,0 +1,38 @@
+Layout: Staggered
+Rows: 43
+Columns: 70
+X Spacing: 0.23
+Y Spacing: 0.23
+Starting X: 8.31
+Starting Y: 4.26
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 9" X 25"
+CUT ON FIBER 10"
+FOR P/N 36000029 USE .155 DIE ON DIEBOARD/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

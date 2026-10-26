@@ -1,0 +1,29 @@
+Layout: Staggered
+Rows: 3
+Columns: 4
+X Spacing: 2.440
+Y Spacing: 2.440
+Starting X: 0.3
+Starting Y: 1.31
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12 1/2" X 36"
+CUT ON FIBER 13"
+PROG. OK
+test for mason 2.38 die
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+Layout: Matrix
+Rows: 3
+Columns: 64
+X Spacing: 0.55
+Y Spacing: 2.2
+Starting X: 0.2
+Starting Y: 7.43
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 70
+Comments: CUT  STOCK 9X36
+CUT ON 10 CARDBOARD
+50 HOLE CANNON
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

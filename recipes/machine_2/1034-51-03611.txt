@@ -1,0 +1,42 @@
+Layout: Matrix
+Rows: 5
+Columns: 36
+X Spacing: 0.95
+Y Spacing: 1.43
+Starting X: 0.98
+Starting Y: 4.60
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: MHW 1034-51-03611
+
+9 1/2 stock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

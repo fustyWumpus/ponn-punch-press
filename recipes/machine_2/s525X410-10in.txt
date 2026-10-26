@@ -1,0 +1,38 @@
+Layout: Staggered
+Rows: 17
+Columns: 56
+X Spacing: 0.6
+Y Spacing: 0.6
+Starting X: 0.3
+Starting Y: 3.68
+Vacuum On Duration: 5
+Vacuum Off Duration: 5
+Speed: 100
+Comments: CUT STOCK 10" X 36"
+CUT ON FIBER 12
+PROG. OK
+PN-P136908 CUT 10 X 36
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

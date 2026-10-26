@@ -1,0 +1,34 @@
+Layout: Matrix
+Rows: 8
+Columns: 40
+X Spacing: 0.5
+Y Spacing: 1.2
+Starting X: 7.34
+Starting Y: 3.26
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: test barnard 127-7-16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

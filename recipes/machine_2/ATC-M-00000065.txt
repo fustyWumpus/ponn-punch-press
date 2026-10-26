@@ -1,0 +1,44 @@
+Layout: Matrix
+Rows: 12
+Columns: 26
+X Spacing: 0.744
+Y Spacing: 0.75
+Starting X: 4.25
+Starting Y: 3.61
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 20"
+CUT CARDBOARD 13"
+PROG. OK
+FLIP SHEET AND GET TOP ROW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

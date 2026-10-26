@@ -1,0 +1,27 @@
+Layout: Staggered
+Rows: 11
+Columns: 19
+X Spacing: 0.77
+Y Spacing: 0.77
+Starting X: 3.08
+Starting Y: 5.09
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 8 X 15 7/8
+FIBER
+TEMPLATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+Layout: Staggered
+Rows: 19
+Columns: 36
+X Spacing: 0.32
+Y Spacing: 0.32
+Starting X: 2.61
+Starting Y: 3.71
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6" X 12"
+CUT ON FIBER 8"
+USE DIE IN GR-1-E-2/.250 X .098
+PROG. OK
+USE TEMPLATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

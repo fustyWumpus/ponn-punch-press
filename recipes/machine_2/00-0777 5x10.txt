@@ -1,0 +1,47 @@
+Layout: Staggered
+Rows: 17
+Columns: 31
+X Spacing: 0.32
+Y Spacing: 0.32
+Starting X: 8.17
+Starting Y: 3.38
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 5" X 10"
+CUT ON FIBER 11"
+PROG. OK
+scrap piece have to tape mat. to fiber
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

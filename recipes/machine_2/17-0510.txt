@@ -1,0 +1,56 @@
+Layout: Staggered
+Rows: 18
+Columns: 51
+X Spacing: 0.695
+Y Spacing: 0.695
+Starting X: 0.2
+Starting Y: 1.72
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12 X 36"
+CUT  ON  FIBER 13" 
+TEFLON .020 TRU
+SPEED 18
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

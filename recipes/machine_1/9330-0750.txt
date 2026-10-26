@@ -1,0 +1,38 @@
+Layout: Staggered
+Rows: 19
+Columns: 49
+X Spacing: 0.71
+Y Spacing: 0.71
+Starting X: 0.2
+Starting Y: 0.95
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 13" X 36"
+
+9330-0750 .630 DISC PSA 2 SIDES
+FIBER PARTS GO UP INTO BOX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+Layout: Staggered
+Rows: 33
+Columns: 89
+X Spacing: 0.4
+Y Spacing: 0.4
+Starting X: 0.3
+Starting Y: 1.7
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON CARDBOARD 13"
+PROG. OK
+PROGRAM 8787
+USE .320 PUNCH WITH 1/2" 
+HOLDER
+RUBBER IN GRAY DRAW
+LIGHT POWDER
+CHECK EVERY 10K
+SHARPEN DIE EVERY 50K
+SPEED 28
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+Layout: Staggered
+Rows: 59
+Columns: 50
+X Spacing: 0.21
+Y Spacing: 0.23
+Starting X: 13.52
+Starting Y: 0.740
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: use template
+for .125 disc
+close
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

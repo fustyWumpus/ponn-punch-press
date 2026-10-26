@@ -1,0 +1,36 @@
+Layout: Staggered
+Rows: 6
+Columns: 28
+X Spacing: 1.261
+Y Spacing: 1.261
+Starting X: 0.3
+Starting Y: 6.34
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON CARDBOARD 13"
+CUT 2 THICK/ WIPE POWDER OFF STOCK / SPEED 18.1
+SCRAP ROLLS PROGRAM***7"-8" X 36"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

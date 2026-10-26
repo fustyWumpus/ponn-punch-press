@@ -1,0 +1,29 @@
+Layout: Staggered
+Rows: 35
+Columns: 41
+X Spacing: 0.275
+Y Spacing: 0.275
+Starting X: 7.65
+Starting Y: 1.87
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" x 10"
+CUT ON FIBER 13"
+PROG. OK
+TEMPLATE CARLISLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

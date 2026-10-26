@@ -1,0 +1,33 @@
+Layout: Staggered
+Rows: 20
+Columns: 40
+X Spacing: 0.57
+Y Spacing: 0.575
+Starting X: 5.18
+Starting Y: 2.53
+Vacuum On Duration: 5
+Vacuum Off Duration: 5
+Speed: 100
+Comments: CUT STOCK 12" X 24"
+CUT FIBER 13"
+PROG. OK
+DRAEGER 515 DISC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

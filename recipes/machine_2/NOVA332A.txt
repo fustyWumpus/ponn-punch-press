@@ -1,0 +1,74 @@
+Layout: Staggered
+Rows: 32
+Columns: 28
+X Spacing: 0.4
+Y Spacing: 0.402
+Starting X: 12.13
+Starting Y: 1.63
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: USE .325 DIE
+USE CARDBOARD TEMPLATE
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

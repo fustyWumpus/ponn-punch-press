@@ -1,0 +1,45 @@
+Layout: Matrix
+Rows: 10
+Columns: 43
+X Spacing: 0.81
+Y Spacing: 0.4
+Starting X: 0.3
+Starting Y: 8.9
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 4 1/2" X 36"
+CUT ON FIBER 6"
+DO NOT RELAX STOCK OR PARTS WILL CUT INTO EACH OTHER ON ENDS/ PROG. OK 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

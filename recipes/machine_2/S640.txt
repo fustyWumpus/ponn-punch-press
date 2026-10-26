@@ -1,0 +1,37 @@
+Layout: Staggered
+Rows: 19
+Columns: 49
+X Spacing: 0.71
+Y Spacing: 0.71
+Starting X: 0.2
+Starting Y: 0.95
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 13" X 36"
+CUT ON CARDBOARD 13 1/2"
+PROG. OK
+P/N-42-1P1 USE FIBER UNDER CARDBOARD SPEED 12.5 POWDER/ LITTLE SILICONE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

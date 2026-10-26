@@ -1,0 +1,45 @@
+Layout: Staggered
+Rows: 4
+Columns: 60
+X Spacing: 0.59
+Y Spacing: 1.215
+Starting X: 0.3
+Starting Y: 8.21
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: 
+VHB PSA 5.25 X 36.00 ON 6.25 RELEASE LINER CUT ON FIBER CONSTANT VAC. LEAVE 6.25 LINER .750 REVEAL UNDER CLAMPS . SEE JOHNNY 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

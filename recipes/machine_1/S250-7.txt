@@ -1,0 +1,17 @@
+Layout: Staggered
+Rows: 22
+Columns: 112
+X Spacing: 0.32
+Y Spacing: 0.32
+Starting X: 0
+Starting Y: 6.70
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 7" X 36"
+CUT ON CARBOARD 10"
+
+
+
+
+

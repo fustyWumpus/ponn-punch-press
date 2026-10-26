@@ -1,0 +1,62 @@
+Layout: Matrix
+Rows: 25
+Columns: 28
+X Spacing: 0.59
+Y Spacing: 0.41
+Starting X: 6.53
+Starting Y: 2.18
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 11" X 18"
+CUT ON FIBER 12"
+USE LIGHT SIL.
+LEAVE PARTS IN SHEET/ CENTER'S REMOVED/SHIP OUTFLAT/PROG. OK 
+SPEED 18
+,ATRIX PROGRAM ONLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+Layout: Matrix
+Rows: 10
+Columns: 36
+X Spacing: 0.57
+Y Spacing: 0.78
+Starting X: 8.11
+Starting Y: 5.200
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: STOCK 8 1/2 " X 21"
+CARDBOARD 10"
+1 THICK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+Layout: Staggered
+Rows: 14
+Columns: 53
+X Spacing: 0.67
+Y Spacing: 0.67
+Starting X: 0.2
+Starting Y: 4.49
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT  ON  CARDBOARD 13"
+FOR P/N E2542 HOLD CENTERS DOWN / CUT ON FIBER
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+Layout: Matrix
+Rows: 4
+Columns: 57
+X Spacing: 0.625
+Y Spacing: 1.38
+Starting X: 0
+Starting Y: 7.51
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 6" X 36"
+CUT ON CARDBOARD 13"         SIL
+PN-9161-0304
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+Layout: Staggered
+Rows: 8
+Columns: 22
+X Spacing: 1.537
+Y Spacing: 1.537
+Starting X: 0.3
+Starting Y: 2.26
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: STOCK 12 X 36
+CARDBOARD 13
+ USE NOZZLE WITH HOLES
+
+
+
+
+
+
+
+
+
+
+
+
+

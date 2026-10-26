@@ -1,0 +1,64 @@
+Layout: Matrix
+Rows: 10
+Columns: 31
+X Spacing: 1.11
+Y Spacing: 0.875
+Starting X: 0.3
+Starting Y: 3.67
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 9.75" X 36"
+CUT ON fiber 11"
+MHW RECTANGLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

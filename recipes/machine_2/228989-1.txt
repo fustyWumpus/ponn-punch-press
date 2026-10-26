@@ -1,0 +1,32 @@
+Layout: Staggered
+Rows: 18
+Columns: 93
+X Spacing: 0.385
+Y Spacing: 0.385
+Starting X: 0.3
+Starting Y: 6.37
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: STOCK 7 X 36
+CARDBOARD 9
+PART 228989-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

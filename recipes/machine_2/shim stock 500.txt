@@ -1,0 +1,52 @@
+Layout: Staggered
+Rows: 18
+Columns: 34
+X Spacing: 0.57
+Y Spacing: 0.57
+Starting X: 8.5
+Starting Y: 3.71
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: SHIM STOCK  10 X 20
+red 500
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

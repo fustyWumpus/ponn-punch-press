@@ -1,0 +1,40 @@
+[project]
+name = "ponn-punch-press"
+version = "0.1.0"
+description = "Control application for the Ponn CNC punch press (Galil motion controller over Ethernet)"
+requires-python = ">=3.12"
+dependencies = [
+    "PySide6>=6.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pyinstaller>=6.0",
+]
+# gclib isn't on PyPI (verified: pypi.org/pypi/gclib/json -> 404) -- Galil
+# distributes it directly from their own site. This is the real, current
+# wheel URL, confirmed reachable and installable in this environment on
+# 2026-07-06. Installing this (a thin ctypes wrapper) is NOT sufficient on
+# its own -- the native gclib DLL must also be installed (see
+# installer/vendor/gclib_2.4.1.exe / the Inno Setup script, which installs
+# it silently). Build the real deployable app with:
+#   pip install -e ".[hardware]"
+# so PyInstaller picks up and bundles the gclib Python module.
+hardware = [
+    "gclib @ https://www.galil.com/sw/pub/python/gclib-1.0.1-py3-none-any.whl",
+]
+
+[project.scripts]
+ponn-punch-press = "ponn_punch_press.app:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

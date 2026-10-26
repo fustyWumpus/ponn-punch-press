@@ -1,0 +1,29 @@
+Layout: Matrix
+Rows: 10
+Columns: 36
+X Spacing: 0.57
+Y Spacing: 0.79
+Starting X: 8.11
+Starting Y: 5.4
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 8 1/2" X 21"
+CUT ON CARDBOARD 10"
+CUT 1 THICK
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

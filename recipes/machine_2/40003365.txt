@@ -1,0 +1,74 @@
+Layout: Staggered
+Rows: 29
+Columns: 25
+X Spacing: 0.455
+Y Spacing: 0.455
+Starting X: 6.7
+Starting Y: 0.880
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: MHW KISS CUT ON FIBER USE TEMPLATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

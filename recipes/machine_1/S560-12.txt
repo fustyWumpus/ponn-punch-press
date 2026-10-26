@@ -1,0 +1,30 @@
+Layout: Staggered
+Rows: 19
+Columns: 47
+X Spacing: 0.66
+Y Spacing: 0.66
+Starting X: 1.700
+Starting Y: 1.580
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: 12 X 36
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

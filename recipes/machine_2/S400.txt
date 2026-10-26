@@ -1,0 +1,29 @@
+Layout: Staggered
+Rows: 27
+Columns: 75
+X Spacing: 0.47
+Y Spacing: 0.47
+Starting X: 0.2
+Starting Y: 1.5
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+USE .395 DIE ON DIEBOARD FOR .400 DISC P/N P23000
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

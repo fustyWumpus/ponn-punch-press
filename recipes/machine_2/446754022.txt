@@ -1,0 +1,13 @@
+Layout: Staggered
+Rows: 26
+Columns: 67
+X Spacing: 0.415
+Y Spacing: 0.415
+Starting X: 0.3
+Starting Y: 3.4
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 28"
+SCRAP STOCK FOR 446754022
+

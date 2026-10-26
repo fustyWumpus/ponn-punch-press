@@ -1,0 +1,50 @@
+Layout: Staggered
+Rows: 11
+Columns: 9
+X Spacing: 1.118
+Y Spacing: 1.118
+Starting X: 12.6
+Starting Y: 0.9
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT ONcardboard 13" and stock w/ 11 1/2" x 11 1/2"
+PROG. OK
+change head
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

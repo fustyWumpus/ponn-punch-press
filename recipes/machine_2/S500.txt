@@ -1,0 +1,35 @@
+Layout: Staggered
+Rows: 17
+Columns: 62
+X Spacing: 0.57
+Y Spacing: 0.57
+Starting X: 0.3
+Starting Y: 4.5
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 9" X 36"
+CUT ON FIBER 10"
+USE NOZZLE WITH HOLES
+NOTES ARE FOR P/N PDR-1-160-1 / PROG. OK
+SPEED14
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

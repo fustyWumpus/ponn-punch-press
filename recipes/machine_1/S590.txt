@@ -1,0 +1,26 @@
+Layout: Staggered
+Rows: 19
+Columns: 53
+X Spacing: 0.66
+Y Spacing: 0.66
+Starting X: 0
+Starting Y: 1.77
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12 " X 36'
+CUT ON CARDBOARD 13"
+PROG. OK
+P/N M-61 CHECK FOR EXTRAS 
+
+
+
+
+
+
+
+
+
+
+
+

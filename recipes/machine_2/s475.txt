@@ -1,0 +1,16 @@
+Layout: Staggered
+Rows: 23
+Columns: 65
+X Spacing: 0.545
+Y Spacing: 0.545
+Starting X: 0.3
+Starting Y: 1.51
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON CARDBOARD 13"
+PROG. OK
+USE FOR P/N 031-14051
+
+

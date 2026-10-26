@@ -1,0 +1,45 @@
+Layout: Matrix
+Rows: 4
+Columns: 54
+X Spacing: 0.625
+Y Spacing: 1.38
+Starting X: 0
+Starting Y: 6.95
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 8" X 34"
+CUT  ON  CARDBOARD
+PROG. OK
+PN 9161-0304
+VAC/SIL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

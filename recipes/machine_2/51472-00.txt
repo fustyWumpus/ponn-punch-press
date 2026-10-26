@@ -1,0 +1,39 @@
+Layout: Matrix
+Rows: 1
+Columns: 66
+X Spacing: 0.177
+Y Spacing: 0.177
+Starting X: 9.64
+Starting Y: 3.04
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: USE THE 1" HOLDER WITH THE TWO TAPPED HOLES
+CUT STRIPS 11 1/2" LG.
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

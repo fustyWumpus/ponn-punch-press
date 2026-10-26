@@ -1,0 +1,48 @@
+Layout: Matrix
+Rows: 7
+Columns: 33
+X Spacing: 1.110
+Y Spacing: 1.110
+Starting X: 0
+Starting Y: 4.75
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: STOCK 9'' X 36"
+FIBER 10"
+GO DEEP SO PARTS STAY DOWN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

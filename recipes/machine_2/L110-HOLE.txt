@@ -1,0 +1,41 @@
+Layout: Matrix
+Rows: 1
+Columns: 106
+X Spacing: 0.108
+Y Spacing: 0.108
+Starting X: 0.3
+Starting Y: 4.84
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: FOR .093 HOLE FOR L110 PROG.
+USE FIBER TEMPLATE
+USE .090 DIE ON DIEBOARD
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

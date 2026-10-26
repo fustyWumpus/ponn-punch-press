@@ -1,0 +1,33 @@
+Layout: Staggered
+Rows: 14
+Columns: 37
+X Spacing: 0.95
+Y Spacing: 0.95
+Starting X: 0.2
+Starting Y: 1.5
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 13" X 37"
+CUT ON CARDBOARD 13" 
+PROG. OK     
+spray silicone
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

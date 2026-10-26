@@ -1,0 +1,32 @@
+Layout: Staggered
+Rows: 33
+Columns: 93
+X Spacing: 0.385
+Y Spacing: 0.385
+Starting X: 0.3
+Starting Y: 1.450
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13" ON BOTTOM
+AND CARDBOARD 13" ON TOP
+USE NOZZLE WITH HOLES
+NOTES ARE FOR P/N N790160-01
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+Layout: Staggered
+Rows: 16
+Columns: 29
+X Spacing: 0.66
+Y Spacing: 0.66
+Starting X: 8.17
+Starting Y: 3.94
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 20"
+CUT ON FIBER 11"
+USE 590 DIE ON DIEBOARD FOR CHOMERICS 603 DISC
+USE POWDER/HOLD CENTERS DOWN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

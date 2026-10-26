@@ -1,0 +1,44 @@
+Layout: Staggered
+Rows: 5
+Columns: 6
+X Spacing: 1.72
+Y Spacing: 1.752
+Starting X: 4.23
+Starting Y: 3.81
+Vacuum On Duration: 7
+Vacuum Off Duration: 7
+Speed: 100
+Comments: MHW DISC W/ 315 HOLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

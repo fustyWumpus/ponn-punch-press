@@ -1,0 +1,33 @@
+Layout: Matrix
+Rows: 4
+Columns: 60
+X Spacing: 0.6
+Y Spacing: 2.7
+Starting X: 0.3
+Starting Y: 3.900
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 37"
+CUT WITH FIBER UNDER 13"
+AND CARDBOARD ON TOP 13"
+CHANGE HEAD/ USE SILICONE
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

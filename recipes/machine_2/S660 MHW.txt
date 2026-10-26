@@ -1,0 +1,19 @@
+Layout: Matrix
+Rows: 13
+Columns: 23
+X Spacing: 0.735
+Y Spacing: 0.735
+Starting X: 2.83
+Starting Y: 1.600
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: MHW SQUARE WITH HOLE 
+CUT SHEET WITH LINER BOTH SIDES LEAVE PARTS IN SHEET
+USE TEMPLATE
+
+
+
+
+
+

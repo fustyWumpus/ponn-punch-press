@@ -1,0 +1,18 @@
+Layout: Staggered
+Rows: 33
+Columns: 112
+X Spacing: 0.32
+Y Spacing: 0.32
+Starting X: 0.3
+Starting Y: 2.89
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 10 1/2" X 36"
+CUT ON FIBER 10"
+FOR P/N 51679-2 USE ID THAT HAS A CRACK/ PROG. OK
+SILICONE
+SPEED 20
+VACCUM
+
+

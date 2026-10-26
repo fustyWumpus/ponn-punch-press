@@ -1,0 +1,39 @@
+Layout: Staggered
+Rows: 26
+Columns: 86
+X Spacing: 0.415
+Y Spacing: 0.415
+Starting X: 0.3
+Starting Y: 3.4
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 10" X 36"
+CUT ON CARDBOARD 11"
+CUT 2 THICK USE .340 DIE ON DIEBOARD
+FOR P/N 111086 CUT ON FIBER USE DIE IN 10-B-2/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

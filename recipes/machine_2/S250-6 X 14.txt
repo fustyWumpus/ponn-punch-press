@@ -1,0 +1,42 @@
+Layout: Staggered
+Rows: 18
+Columns: 41
+X Spacing: 0.32
+Y Spacing: 0.32
+Starting X: 10.88
+Starting Y: 7.66
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6" X 14"
+CUT ON FIBER 8"
+MOVE CLAMPS TOGETHER 12.5
+EZ FORM CABLE PN; 302475-2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

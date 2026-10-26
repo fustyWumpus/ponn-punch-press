@@ -1,0 +1,40 @@
+Layout: Staggered
+Rows: 27
+Columns: 77
+X Spacing: 0.44
+Y Spacing: 0.44
+Starting X: 0.3
+Starting Y: 2.35
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 11 X 36"
+CUT ON CARDBOARD 13"
+PROG. OK
+PN-111086
+FIBER/SLOW SPEED/GREASE BEFORE RUNNING /EVERY 20,000 PCS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

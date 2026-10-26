@@ -1,0 +1,44 @@
+Layout: Staggered
+Rows: 17
+Columns: 36
+X Spacing: 0.358
+Y Spacing: 0.358
+Starting X: 2.31
+Starting Y: 3.54
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: TEMPLATE
+SHORT STOCK TEST
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

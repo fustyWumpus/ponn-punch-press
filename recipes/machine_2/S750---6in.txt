@@ -1,0 +1,36 @@
+Layout: Staggered
+Rows: 7
+Columns: 43
+X Spacing: 0.82
+Y Spacing: 0.83
+Starting X: 0.3
+Starting Y: 6.9
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6" X 36"(leftover stock)
+CUT ON CARDBOARD 13"
+FOR P/N 181329-00  USE DIE IN GR-5-A-6 AND.530 DIEON BOARD USE RUBBER AND SPRING IN CABINET/CUT SHINY SIDE DOWN/HOLD CENTERS DOWN/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

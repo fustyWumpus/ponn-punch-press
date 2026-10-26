@@ -1,0 +1,52 @@
+Layout: Staggered
+Rows: 33
+Columns: 91
+X Spacing: 0.39
+Y Spacing: 0.39
+Starting X: 0.3
+Starting Y: 1.8
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON CARDBOARD 13"
+FOR P/N 323622-0010 CUT SHINY SIDE UP / ON FIBER 13"
+PROG. OK PN-0021-2459-003  CUT TWO THICK/CARDBOARD/CARDBOARD TEMPLATE TO CATCH PARTS 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

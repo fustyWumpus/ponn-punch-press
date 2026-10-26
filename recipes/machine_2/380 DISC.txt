@@ -1,0 +1,30 @@
+Layout: Staggered
+Rows: 23
+Columns: 72
+X Spacing: 0.47
+Y Spacing: 0.47
+Starting X: 0.2
+Starting Y: 4.25
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: 380 disc 5186-0372 CHECK FINAL ROW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

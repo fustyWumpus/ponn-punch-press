@@ -1,0 +1,66 @@
+Layout: Matrix
+Rows: 9
+Columns: 9
+X Spacing: 1.295
+Y Spacing: 1.295
+Starting X: 12.650
+Starting Y: 0.85
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 12"/USE TEMP
+CUT ON FIBER 13 1/2"/PROG. OK
+USE O.D. IN LOC. GR-9-B-4
+USE .625 I.D. ON DIEBOARD
+HOLD CENTERS DOWN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

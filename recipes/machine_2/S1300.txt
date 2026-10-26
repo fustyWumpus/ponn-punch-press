@@ -1,0 +1,58 @@
+Layout: Staggered
+Rows: 9
+Columns: 25
+X Spacing: 1.39
+Y Spacing: 1.4
+Starting X: 0.2
+Starting Y: 1.97
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+TAKE OUT MIDDLE VACUUM PLATE/ PROG. OK. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+Layout: Staggered
+Rows: 16
+Columns: 44
+X Spacing: 0.78
+Y Spacing: 0.78
+Starting X: 0.2
+Starting Y: 1.25
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12 1/2" X 36"
+CUT ON CARDBOARD 13"
+PROG. OK
+PN 900360-03 USE POWDER/FIBER
+PN-10G9410PM1-FIBER POWDER-SPEED17
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

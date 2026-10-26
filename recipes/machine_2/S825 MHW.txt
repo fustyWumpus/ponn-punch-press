@@ -1,0 +1,36 @@
+Layout: Staggered
+Rows: 10
+Columns: 39
+X Spacing: 0.895
+Y Spacing: 0.895
+Starting X: 0.200
+Starting Y: 5.210
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: STOCK 8.750 X 36
+FIBER 10
+GLUE DIE TO HOLDER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

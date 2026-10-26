@@ -1,0 +1,42 @@
+Layout: Staggered
+Rows: 16
+Columns: 45
+X Spacing: 0.79
+Y Spacing: 0.79
+Starting X: 0.300
+Starting Y: 1.75
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13" / NO SIL.
+USE DIE IN 9-A-3 & .160 DIE ON
+DIEBOARD, DO NOT USE VACUUM WIPE OFF CENTERS
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

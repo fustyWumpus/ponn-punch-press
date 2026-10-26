@@ -1,0 +1,33 @@
+Layout: Matrix
+Rows: 16
+Columns: 51
+X Spacing: 0.695
+Y Spacing: 0.695
+Starting X: 0.2
+Starting Y: 1.71
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT  STOCK 12" X 36"
+CUT ON CARDBOARD 13"
+USE A .110 PIN TO POKE OUT HOLES ON A FOAM PAD/STAPLE 2 SHEETS TOGETHER TO REMOVE PART/PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

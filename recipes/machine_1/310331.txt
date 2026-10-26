@@ -1,0 +1,38 @@
+Layout: Matrix
+Rows: 19
+Columns: 26
+X Spacing: 1.36
+Y Spacing: 0.59
+Starting X: 0.3
+Starting Y: 1.85
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13" 
+CUT 1.260 DIM ALONG 36" LEN. 
+LIGHT POWDER ON TOP/ SPEED 19.0 / PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

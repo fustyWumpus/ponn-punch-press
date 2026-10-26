@@ -1,0 +1,38 @@
+Layout: Matrix
+Rows: 7
+Columns: 44
+X Spacing: 0.77
+Y Spacing: 1.36
+Starting X: 0.3
+Starting Y: 2.07
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+FISH PAPER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

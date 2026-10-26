@@ -1,0 +1,46 @@
+Layout: Matrix
+Rows: 7
+Columns: 9
+X Spacing: 1.88
+Y Spacing: 1.125
+Starting X: 7.12
+Starting Y: 4.08
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: mhw AL-74879
+FIBER, FLIP SHEET OVER AND DO SINGLE ROW FOR BEST YIELD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

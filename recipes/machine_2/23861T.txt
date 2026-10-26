@@ -1,0 +1,39 @@
+Layout: Staggered
+Rows: 29
+Columns: 25
+X Spacing: 0.353
+Y Spacing: 0.343
+Starting X: 3.230
+Starting Y: 2.320
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 9.000 X 9.300
+CUT ON FIBER 13"
+USE TEMPLATE/ PROGRAM IS FOR CENTER PIECE OF STOCK
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

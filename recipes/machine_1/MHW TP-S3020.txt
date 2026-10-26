@@ -1,0 +1,42 @@
+Layout: Matrix
+Rows: 7
+Columns: 9
+X Spacing: 1.25
+Y Spacing: 1.1
+Starting X: 3.71
+Starting Y: 3.52
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: USE TEMPLATE
+FIBER 13"
+FOR MHW SQUARE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

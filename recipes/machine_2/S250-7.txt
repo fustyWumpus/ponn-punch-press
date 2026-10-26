@@ -1,0 +1,41 @@
+Layout: Staggered
+Rows: 23
+Columns: 112
+X Spacing: 0.32
+Y Spacing: 0.32
+Starting X: 0
+Starting Y: 6.53
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 7" X 36"
+CUT ON FIBER 8"
+PROG. OK
+PN-8042124
+CUT 1000, HOME, AND FLIP SHEET
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

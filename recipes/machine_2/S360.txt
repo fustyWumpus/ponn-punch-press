@@ -1,0 +1,51 @@
+Layout: Staggered
+Rows: 20
+Columns: 83
+X Spacing: 0.43
+Y Spacing: 0.43
+Starting X: 0.3
+Starting Y: 4.77
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 8" X 36"
+CUT ON FIBER 9"
+PROG. OK
+PN-2301-01-34-FIBER-POWDER-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

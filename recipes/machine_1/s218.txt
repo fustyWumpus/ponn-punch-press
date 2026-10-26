@@ -1,0 +1,26 @@
+Layout: Staggered
+Rows: 49
+Columns: 100
+X Spacing: 0.288
+Y Spacing: 0.288
+Starting X: 0.3
+Starting Y: 1.75
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12X30
+USE .205 DIE FOR .210 DISC
+CUT ON FIBER
+
+
+
+
+
+
+
+
+
+
+
+
+

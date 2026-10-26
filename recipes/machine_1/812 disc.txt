@@ -1,0 +1,28 @@
+Layout: Staggered
+Rows: 14
+Columns: 40
+X Spacing: 0.884
+Y Spacing: 0.884
+Starting X: 0.2
+Starting Y: 5.21
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: test 812 disc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

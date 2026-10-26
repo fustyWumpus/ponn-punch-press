@@ -1,0 +1,17 @@
+Layout: Staggered
+Rows: 14
+Columns: 80
+X Spacing: 0.3
+Y Spacing: 0.3
+Starting X: 4.62
+Starting Y: 5
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 9" X 24"
+CUT ON FIBER 10"
+test white stock 
+
+
+
+

@@ -1,0 +1,45 @@
+Layout: Staggered
+Rows: 32
+Columns: 28
+X Spacing: 0.402
+Y Spacing: 0.342
+Starting X: 12.35
+Starting Y: 1.9
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Comments: 
+USE  .325 DIE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

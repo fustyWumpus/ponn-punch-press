@@ -1,0 +1,31 @@
+Layout: Matrix
+Rows: 11
+Columns: 17
+X Spacing: 2.08
+Y Spacing: 1.035
+Starting X: 0.3
+Starting Y: 1.6
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12 1/2" X 36"
+CUT FIBER 13"
+CLEAN MATERIAL WITH SOAPY WATER
+SPRAY TOP WITH SILICONE
+CUT 1.990 DIM. ALONG 36" LENGTH
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+Layout: Matrix
+Rows: 11
+Columns: 39
+X Spacing: 0.92
+Y Spacing: 0.92
+Starting X: 0.3
+Starting Y: 1.590
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: 
+STOCK 12X36
+FIBER 13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

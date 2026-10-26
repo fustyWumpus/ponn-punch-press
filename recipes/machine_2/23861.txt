@@ -1,0 +1,42 @@
+Layout: Staggered
+Rows: 28
+Columns: 36
+X Spacing: 0.353
+Y Spacing: 0.343
+Starting X: 9.15
+Starting Y: 4.4
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 9" X 14"
+CUT ON FIBER 10"
+PROGRAM IS FOR 1,000 PCS. PER SETUP/ PROG. OK
+MOVE LEFT CLAMP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

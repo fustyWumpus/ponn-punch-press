@@ -1,0 +1,67 @@
+Layout: Staggered
+Rows: 25
+Columns: 22
+X Spacing: 0.52
+Y Spacing: 0.52
+Starting X: 12.24
+Starting Y: 0.510
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: USE TEMPLATE
+CUT ON FIBER 13 1/2"
+SPEED 21.7/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

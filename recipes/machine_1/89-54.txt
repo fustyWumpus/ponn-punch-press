@@ -1,0 +1,29 @@
+Layout: Staggered
+Rows: 10
+Columns: 10
+X Spacing: 0.700
+Y Spacing: 0.700
+Starting X: 3.00
+Starting Y: 4.27
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: ALLEN BRADLEY KISS CUT 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

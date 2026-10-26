@@ -1,0 +1,43 @@
+Layout: Matrix
+Rows: 40
+Columns: 205
+X Spacing: 0.17
+Y Spacing: 0.285
+Starting X: 1
+Starting Y: 1.5
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 12 1/2"
+CUT SHINY SIDE DOWN/ USE LIGHT SILICONE
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

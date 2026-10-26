@@ -1,0 +1,43 @@
+Layout: Staggered
+Rows: 35
+Columns: 95
+X Spacing: 0.37
+Y Spacing: 0.37
+Starting X: 0.3
+Starting Y: 1.635
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 13"
+FOR P/N 323622-0010 CUT SHINY SIDE DOWN/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

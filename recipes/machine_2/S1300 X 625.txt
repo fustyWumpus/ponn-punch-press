@@ -1,0 +1,58 @@
+Layout: Staggered
+Rows: 8
+Columns: 25
+X Spacing: 1.39
+Y Spacing: 1.4
+Starting X: 0.2
+Starting Y: 2.04
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON CARDBOARD 13" 
+TURN SHEET AROUND AND CUT SINGLE TOP ROW/ NOTES ARE FOR P/N V21930/ USE TUBING TO PUT INSIDE 1" HOLDER/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

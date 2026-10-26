@@ -1,0 +1,38 @@
+Layout: Staggered
+Rows: 8
+Columns: 13
+X Spacing: 0.66
+Y Spacing: 0.7
+Starting X: 0.8
+Starting Y: 7.73
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6" X 9"
+CUT ON FIBER 7"
+USE .600 DIE ON DIEBOARD
+LINE UP BY EYE/ NO TEMPLATE
+PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

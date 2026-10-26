@@ -1,0 +1,43 @@
+Layout: Staggered
+Rows: 18
+Columns: 32
+X Spacing: 0.36
+Y Spacing: 0.350
+Starting X: 3.280
+Starting Y: 2.3
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6" X 12"
+CUT ON FIBER 13"
+PROG. OK
+TEMPLATE PN-1701-GP-0213-A-A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

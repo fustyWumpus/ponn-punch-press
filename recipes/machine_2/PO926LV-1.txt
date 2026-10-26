@@ -1,0 +1,51 @@
+Layout: Matrix
+Rows: 1
+Columns: 12
+X Spacing: 2.9
+Y Spacing: 1.4
+Starting X: 0.3
+Starting Y: 3.15
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT  STOCK 12" X 36"
+CUT ON FIBER 13"
+CUT PSA DOWN / CHANGE HEAD
+PROGRAM FOR SINGLE TOP ROW OF SCRAP PCS./ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

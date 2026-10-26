@@ -1,0 +1,48 @@
+Layout: Staggered
+Rows: 20
+Columns: 51
+X Spacing: 0.358
+Y Spacing: 0.358
+Starting X: 8.89
+Starting Y: 4.51
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6" X 20"
+CUT ON FIBER 13"
+USE NO RUBBER ON DIE
+USE TEMPLATE/ USE .031 + .041 THICK DIE/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

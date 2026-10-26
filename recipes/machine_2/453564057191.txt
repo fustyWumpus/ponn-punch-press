@@ -1,0 +1,39 @@
+Layout: Matrix
+Rows: 4
+Columns: 53
+X Spacing: 0.674
+Y Spacing: 2.718
+Starting X: 0.2
+Starting Y: 3.62
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12 1/2" X 36"
+CUT ON FIBER 13"\
+SILICONE
+CLEAN OUT DIE AFTER EVERY ROW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+Layout: Staggered
+Rows: 19
+Columns: 53
+X Spacing: 0.665
+Y Spacing: 0.665
+Starting X: 0.3
+Starting Y: 2
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 81
+Comments: CUT STOCK 12" X 37"
+CUT ON CARDBOARD 13"
+CUT 2 THICK/ SHINY SIDE DOWN
+FOR P/N M-126 USE LIGHT POWDER ON TOP/ PROG. OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

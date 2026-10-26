@@ -1,0 +1,49 @@
+Layout: Matrix
+Rows: 25
+Columns: 60
+X Spacing: 0.59
+Y Spacing: 0.41
+Starting X: 0.3
+Starting Y: 2.21
+Vacuum On Duration: 0
+Vacuum Off Duration: 0
+Speed: 100
+Comments: CUT STOCK 12" X 36"
+CUT ON FIBER 12"
+USE LIGHT SIL.
+LEAVE PARTS IN SHEET/ SHIP OUT FLAT/ PROG. OK
+SILICONE/CONSTANT VACCUM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

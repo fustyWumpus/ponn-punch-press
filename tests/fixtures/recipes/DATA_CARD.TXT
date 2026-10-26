@@ -1,0 +1,19 @@
+Layout: Matrix
+Rows: 7
+Columns: 75
+X Spacing: 0.475
+Y Spacing: 1.22
+Starting X: 0.2
+Starting Y: 4.937
+Vacuum On Duration: 5
+Vacuum Off Duration: 5
+Comments: 
+
+
+
+
+
+
+
+
+

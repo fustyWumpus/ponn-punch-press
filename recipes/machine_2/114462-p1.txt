@@ -1,0 +1,52 @@
+Layout: Matrix
+Rows: 11
+Columns: 14
+X Spacing: 2.5
+Y Spacing: 0.86
+Starting X: 1.45
+Starting Y: 2.62
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: 114462-p1
+cut stock 11 x 37
+cardboard 13
+used .750 holder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

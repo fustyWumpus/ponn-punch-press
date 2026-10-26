@@ -1,0 +1,39 @@
+Layout: Staggered
+Rows: 13
+Columns: 89
+X Spacing: 0.4
+Y Spacing: 0.4
+Starting X: 0.3
+Starting Y: 7.94
+Vacuum On Duration: 10
+Vacuum Off Duration: 10
+Speed: 100
+Comments: CUT STOCK 6 1/2" X 36"
+CUT ON FIBER, POWDER BOTH SIDES OF MAT.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
