@@ -9,6 +9,7 @@ import os
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import pytest
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QMessageBox
 
 from ponn_punch_press.core.machine_profile import MachineProfile
@@ -364,6 +365,40 @@ def test_fullscreen_menu_action_toggles_fullscreen_and_stays_in_sync(qapp, tmp_p
     assert win.fullscreen_action.isChecked() is False
     win.panel_machine_1.shut_down()
     win.panel_machine_2.shut_down()
+
+
+def test_exit_button_sits_in_the_top_right_corner_of_the_menu_bar(qapp, tmp_path):
+    win = _new_window(MachineProfileStore(base_dir=tmp_path / "exit_pos"), qapp)
+    win.resize(1400, 900)
+    win.show()
+    qapp.processEvents()
+
+    assert win.menuBar().cornerWidget(Qt.TopRightCorner) is win.exit_button
+    assert win.exit_button.text() == "Exit"
+    assert win.exit_button.isVisible() is True
+    # Right-aligned against the window's right edge, within the menu bar strip.
+    right_edge = win.exit_button.mapTo(win, win.exit_button.rect().topRight()).x()
+    assert right_edge >= win.width() - 4
+    assert win.exit_button.mapTo(win, win.exit_button.rect().topLeft()).y() <= win.menuBar().height()
+    win.panel_machine_1.shut_down()
+    win.panel_machine_2.shut_down()
+
+
+def test_clicking_exit_closes_the_window_saves_geometry_and_stops_polling(qapp, tmp_path):
+    store = MachineProfileStore(base_dir=tmp_path / "exit_click")
+    win = _new_window(store, qapp)
+    win.show()
+    qapp.processEvents()
+    assert store.get_window_geometry() is None
+    assert win.panel_machine_1.poll_timer.isActive() is True
+
+    win.exit_button.click()
+    qapp.processEvents()
+
+    assert win.isVisible() is False
+    assert store.get_window_geometry() is not None
+    assert win.panel_machine_1.poll_timer.isActive() is False
+    assert win.panel_machine_2.poll_timer.isActive() is False
 
 
 def test_leaving_fullscreen_returns_to_the_previous_maximized_or_normal_state(qapp, tmp_path):

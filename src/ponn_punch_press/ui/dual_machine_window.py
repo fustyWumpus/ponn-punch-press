@@ -4,7 +4,7 @@ import struct
 
 from PySide6.QtCore import QByteArray, QEvent, QRect, Qt
 from PySide6.QtGui import QAction, QGuiApplication, QKeySequence
-from PySide6.QtWidgets import QMainWindow, QSplitter
+from PySide6.QtWidgets import QMainWindow, QPushButton, QSplitter
 
 from .about_dialog import AboutDialog
 from .machine_panel import MachinePanel
@@ -44,6 +44,13 @@ QPushButton#dangerButton {
     background-color: #d1373f;
     color: white;
     font-weight: 600;
+}
+QPushButton#exitButton {
+    background-color: #d1373f;
+    color: white;
+    font-weight: 600;
+    padding: 2px 18px;
+    border-radius: 4px;
 }
 QPushButton#framedButton {
     border: 2px solid #888;
@@ -164,6 +171,15 @@ class DualMachineWindow(QMainWindow):
         self.fullscreen_action.setShortcut(QKeySequence(Qt.Key_F11))
         self.fullscreen_action.triggered.connect(self.set_fullscreen)
         view_menu.addAction(self.fullscreen_action)
+
+        # Top-right corner of the menu bar -- the one strip that stays visible
+        # in fullscreen, where there is no title-bar close button. Same effect
+        # as File > Exit.
+        self.exit_button = QPushButton("Exit")
+        self.exit_button.setObjectName("exitButton")
+        self.exit_button.setToolTip("Exit the program (stops motion on both machines)")
+        self.exit_button.clicked.connect(self.close)
+        self.menuBar().setCornerWidget(self.exit_button, Qt.TopRightCorner)
 
     def set_fullscreen(self, enabled: bool) -> None:
         if enabled == self.isFullScreen():
