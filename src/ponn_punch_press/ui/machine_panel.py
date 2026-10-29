@@ -368,6 +368,12 @@ class MachinePanel(QWidget):
         counter_row.addWidget(self.reset_counter_button)
         right_column.addLayout(counter_row)
 
+        self.download_status_label = QLabel()
+        self.download_status_label.setObjectName("downloadStatusLabel")
+        self.download_status_label.setAlignment(Qt.AlignCenter)
+        right_column.addWidget(self.download_status_label)
+        self._update_download_status()
+
         self.download_button = QPushButton("DOWNLOAD PROGRAM")
         self.download_button.setObjectName("primaryButton")
         self.download_button.clicked.connect(self._on_download_recipe)
@@ -442,6 +448,14 @@ class MachinePanel(QWidget):
 
     # --- recipe list ---
 
+    def _update_download_status(self) -> None:
+        downloaded = self.workflow.recipe_downloaded
+        self.download_status_label.setText("Program downloaded" if downloaded else "No program downloaded")
+        self.download_status_label.setProperty("downloaded", downloaded)
+        # The stylesheet colours the label by this dynamic property.
+        self.download_status_label.style().unpolish(self.download_status_label)
+        self.download_status_label.style().polish(self.download_status_label)
+
     def _refresh_recipe_list(self) -> None:
         self.recipe_list.blockSignals(True)
         self.recipe_list.clear()
@@ -452,9 +466,11 @@ class MachinePanel(QWidget):
         self.recipe_list.setCurrentRow(-1)
         self.recipe_list.blockSignals(False)
         self.workflow.recipe_downloaded = False
+        self._update_download_status()
 
     def _on_recipe_selected(self, row: int) -> None:
         self.workflow.recipe_downloaded = False
+        self._update_download_status()
         if row < 0:
             return
         recipe: Recipe = self.recipe_list.item(row).data(Qt.UserRole)
@@ -500,6 +516,7 @@ class MachinePanel(QWidget):
         self.speed_spin.setValue(100)
         self.comments_edit.setPlainText("")
         self.workflow.recipe_downloaded = False
+        self._update_download_status()
 
     def _on_save_recipe(self) -> None:
         default_name = self.current_recipe.recipe_number if self.current_recipe else ""
@@ -532,6 +549,7 @@ class MachinePanel(QWidget):
             QMessageBox.information(self, "Punch Press is Running", str(exc))
         except MotionControllerError as exc:
             self._show_controller_error("send the program to", exc)
+        self._update_download_status()
 
     def _on_home(self) -> None:
         try:
@@ -540,6 +558,7 @@ class MachinePanel(QWidget):
             self._show_controller_error("send the home command to", exc)
             return
         self.homed_status_label.setText("Homing...")
+        self._update_download_status()
 
     def _on_toggle_pause(self) -> None:
         try:
@@ -557,6 +576,7 @@ class MachinePanel(QWidget):
             self.workflow.restart()
         except MotionControllerError as exc:
             self._show_controller_error("send the restart command to", exc)
+        self._update_download_status()
 
     def _on_use_current_position(self) -> None:
         self.x_start_spin.setValue(self._last_x_position)
@@ -593,6 +613,7 @@ class MachinePanel(QWidget):
         self.y_position_label.setText(f"Y: {result.y_position_inches:.3f}")
         self.piece_counter_label.setText(f"Count: {result.piece_count}")
         self.homed_status_label.setText("HOMED" if result.homed else "Not Homed")
+        self._update_download_status()  # catches flag changes made inside the workflow
 
         if result.new_program_error:
             QMessageBox.warning(

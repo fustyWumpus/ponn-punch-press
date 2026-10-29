@@ -134,10 +134,10 @@ def test_inject_fault_rejects_unknown_type():
         sim.inject_fault("not_a_real_fault")
 
 
-def test_set_running_toggles_mgrunning():
+def test_set_running_toggles_running():
     sim = Simulator()
     sim.open("192.168.1.10")
     sim.set_running(True)
-    assert sim.get_variable("MGRUNNING") == 1.0
+    assert sim.get_variable("RUNNING") == 1.0
     sim.set_running(False)
-    assert sim.get_variable("MGRUNNING") == 0.0
+    assert sim.get_variable("RUNNING") == 0.0

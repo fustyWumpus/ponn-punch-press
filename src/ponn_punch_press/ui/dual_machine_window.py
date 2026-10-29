@@ -7,6 +7,7 @@ from PySide6.QtGui import QAction, QGuiApplication, QKeySequence
 from PySide6.QtWidgets import QMainWindow, QPushButton, QSplitter
 
 from .about_dialog import AboutDialog
+from .click_feedback import install_click_feedback
 from .machine_panel import MachinePanel
 
 # A modernized, screen-filling look: bigger type and more generous spacing
@@ -99,6 +100,32 @@ QPushButton#jogButton:pressed {
 QPushButton#jogButton:disabled {
     border-color: #444;
 }
+QPushButton#primaryButton:pressed {
+    background-color: #1b4fb8;
+}
+QPushButton#dangerButton:pressed, QPushButton#exitButton:pressed {
+    background-color: #8f1f26;
+}
+QLabel#downloadStatusLabel {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #e0a030;
+}
+QLabel#downloadStatusLabel[downloaded="true"] {
+    color: #3fb950;
+}
+/* Brief highlight after any button is clicked -- see click_feedback.py. Kept
+   last so it wins over the per-button rules above. */
+QPushButton[flash="true"] {
+    border-color: #2f6fed;
+    background-color: rgba(47, 111, 237, 0.35);
+}
+QPushButton#primaryButton[flash="true"] {
+    background-color: #1b4fb8;
+}
+QPushButton#dangerButton[flash="true"], QPushButton#exitButton[flash="true"] {
+    background-color: #8f1f26;
+}
 """
 
 _GEOMETRY_MAGIC = 0x01D9D0CB
@@ -153,6 +180,7 @@ class DualMachineWindow(QMainWindow):
         self.splitter.setStretchFactor(0, 1)
         self.splitter.setStretchFactor(1, 1)
         self.setCentralWidget(self.splitter)
+        install_click_feedback(self)
 
     def _build_menu(self) -> None:
         file_menu = self.menuBar().addMenu("&File")

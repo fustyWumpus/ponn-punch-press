@@ -5,9 +5,10 @@ from .controller import Axis, MotionControllerConnectionError
 # Mirrors the variable defaults PONN_PUNCH_PRESS.dmc's #INIT routine sets
 # (PAUSE=1, ERROR=0, VACEN=0, HOMED=0, COUNT=0) plus the fault-detection
 # variables PollTimer_Tick reads (_XQ0, _XQ1, _AB, SCX, SCY, TC, @IN[4]) and
-# MGRUNNING, which DownloadRecipe_Click checks before allowing a download.
+# RUNNING (legacy: `MG RUNNING`), which DownloadRecipe_Click checks before
+# allowing a download.
 _DEFAULT_VARIABLES: dict[str, float] = {
-    "MGRUNNING": 0.0,
+    "RUNNING": 0.0,
     "PAUSE": 1.0,
     "ERROR": 0.0,
     "VACEN": 0.0,
@@ -183,5 +184,5 @@ class Simulator:
 
     def set_running(self, running: bool) -> None:
         """Test hook: simulate the controller reporting a job in progress
-        (MGRUNNING), for testing the download-while-running rejection path."""
-        self._variables["MGRUNNING"] = 1.0 if running else 0.0
+        (RUNNING), for testing the download-while-running rejection path."""
+        self._variables["RUNNING"] = 1.0 if running else 0.0

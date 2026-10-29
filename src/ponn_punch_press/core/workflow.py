@@ -152,7 +152,7 @@ class PunchPressWorkflow:
     def download_recipe(self, recipe: Recipe) -> None:
         """Port of DownloadRecipe_Click. Raises RecipeDownloadRejected if the
         controller reports a job already running."""
-        if self.controller.get_variable("MGRUNNING") != 0:
+        if self.controller.get_variable("RUNNING") != 0:
             raise RecipeDownloadRejected(
                 "Punch Press is running a job. Wait until finished before downloading a new program."
             )

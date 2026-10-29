@@ -10,6 +10,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import pytest
 from PySide6.QtCore import Qt
+from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QMessageBox
 
 from ponn_punch_press.core.machine_profile import MachineProfile
@@ -97,6 +98,42 @@ def test_download_recipe_then_poll_updates_status_independently(window):
 
     window.panel_machine_1._on_poll_tick()
     assert window.panel_machine_1.piece_counter_label.text() == "Count: 0"
+
+
+def test_download_status_label_follows_the_download_state(window):
+    panel_1 = window.panel_machine_1
+    panel_2 = window.panel_machine_2
+    assert panel_1.download_status_label.text() == "No program downloaded"
+
+    panel_1.recipe_list.setCurrentRow(0)
+    panel_1._on_download_recipe()
+    assert panel_1.download_status_label.text() == "Program downloaded"
+    assert panel_1.download_status_label.property("downloaded") is True
+    assert panel_2.download_status_label.text() == "No program downloaded"
+
+    # Picking a different program means the controller no longer holds it.
+    panel_1.recipe_list.setCurrentRow(1)
+    assert panel_1.download_status_label.text() == "No program downloaded"
+    assert panel_1.download_status_label.property("downloaded") is False
+
+
+def test_every_button_flashes_when_clicked_then_clears(window, qapp):
+    from PySide6.QtWidgets import QPushButton
+
+    buttons = window.findChildren(QPushButton)
+    assert window.exit_button in buttons
+    assert window.panel_machine_1.download_button in buttons
+    assert window.panel_machine_2.jog_left_button in buttons
+
+    button = window.panel_machine_1.reset_counter_button
+    assert not button.property("flash")
+    button.click()
+    assert button.property("flash") is True
+
+    for _ in range(40):  # the flash is ~300 ms; let the single-shot timer fire
+        qapp.processEvents()
+        QTest.qWait(10)
+    assert button.property("flash") is False
 
 
 def test_jog_on_machine1_does_not_move_machine2(window):
