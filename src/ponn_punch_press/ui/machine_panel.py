@@ -95,6 +95,34 @@ def _make_arrow_icon(rotation_degrees: float, size: int = 64, color: str = "#fff
 
 
 _COMMENTS_MIN_LINES = 5
+_MAX_COUNT_SHOWN = 99999  # the piece counter reserves room for this many digits
+
+
+class _ReservedWidthLabel(QLabel):
+    """A label whose width hint always covers `widest_text` in the current
+    font, so its layout doesn't change size as the text changes (and stays
+    right when the window shrinks the text to fit a small screen)."""
+
+    def __init__(self, text: str, widest_text: str):
+        super().__init__(text)
+        self._widest_text = widest_text
+
+    def _reserved(self, hint: QSize) -> QSize:
+        metrics = self.fontMetrics()
+        text_width = max(metrics.horizontalAdvance(self._widest_text), metrics.boundingRect(self._widest_text).width())
+        # + a few px of slack: QLabel's own width hint for the same text can
+        # come out a pixel or two wider than the font's advance, and the
+        # reserved width has to win by more than that or the layout would
+        # still shift by a pixel at the widest value.
+        wanted = text_width + 2 * self.margin() + 2 * self.frameWidth() + 4
+        hint.setWidth(max(hint.width(), wanted))
+        return hint
+
+    def sizeHint(self) -> QSize:  # noqa: N802 (Qt override)
+        return self._reserved(super().sizeHint())
+
+    def minimumSizeHint(self) -> QSize:  # noqa: N802 (Qt override)
+        return self._reserved(super().minimumSizeHint())
 
 
 class _CommentsEdit(QPlainTextEdit):
@@ -164,7 +192,6 @@ class MachinePanel(QWidget):
         except MotionControllerError as exc:
             self._show_controller_error("connect to", exc)
         self._refresh_recipe_list()
-        self._update_pause_button_text()
         self.poll_timer.start(_STARTUP_POLL_INTERVAL_MS)
         # Subsequent ticks run at the normal 500ms rate (was PollTimer.Interval
         # = 500 set on the first tick in PollTimer_Tick).
@@ -407,7 +434,9 @@ class MachinePanel(QWidget):
         outer.addLayout(right_column, stretch=1)
 
         counter_row = QHBoxLayout()
-        self.piece_counter_label = QLabel("Count: 0")
+        # Reserves room for the widest count (99999), so the label -- and with
+        # it the whole section -- never changes size as the count grows.
+        self.piece_counter_label = _ReservedWidthLabel("Count: 0", widest_text=f"Count: {_MAX_COUNT_SHOWN}")
         self.piece_counter_label.setObjectName("positionLabel")
         self.reset_counter_button = QPushButton("Reset Counter")
         self.reset_counter_button.setObjectName("framedButton")
@@ -422,27 +451,24 @@ class MachinePanel(QWidget):
         right_column.addWidget(self.download_status_label)
         self._update_download_status()
 
+        # DOWNLOAD and RESTART share all the height below the status line, so
+        # the column is as tall as the jog arrows beside it. (There used to be
+        # a PAUSE button between them; downloading now un-pauses on its own.)
         self.download_button = QPushButton("DOWNLOAD PROGRAM")
         self.download_button.setObjectName("primaryButton")
         self.download_button.clicked.connect(self._on_download_recipe)
-        right_column.addWidget(self.download_button)
-
-        self.toggle_pause_button = QPushButton("UN-PAUSE")
-        self.toggle_pause_button.setObjectName("framedButton")
-        self.toggle_pause_button.clicked.connect(self._on_toggle_pause)
-        right_column.addWidget(self.toggle_pause_button)
+        right_column.addWidget(self.download_button, stretch=1)
 
         self.restart_button = QPushButton("RESTART")
         self.restart_button.setObjectName("dangerButton")
         self.restart_button.clicked.connect(self._on_restart)
-        right_column.addWidget(self.restart_button)
+        right_column.addWidget(self.restart_button, stretch=1)
 
-        # Smaller text/padding on the three action buttons frees width for the
+        # Smaller text/padding on the action buttons frees width for the
         # larger jog arrows.
-        for button in (self.download_button, self.toggle_pause_button, self.restart_button):
+        for button in (self.download_button, self.restart_button):
             button.setProperty("compact", True)
-
-        right_column.addStretch(1)
+            button.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
 
         return box
 
@@ -621,17 +647,6 @@ class MachinePanel(QWidget):
             return
         self.homed_status_label.setText("Homing...")
         self._update_download_status()
-
-    def _on_toggle_pause(self) -> None:
-        try:
-            self.workflow.toggle_pause()
-        except MotionControllerError as exc:
-            self._show_controller_error("communicate with", exc)
-            return
-        self._update_pause_button_text()
-
-    def _update_pause_button_text(self) -> None:
-        self.toggle_pause_button.setText("UN-PAUSE" if self.workflow.is_paused else "PAUSE")
 
     def _on_restart(self) -> None:
         try:

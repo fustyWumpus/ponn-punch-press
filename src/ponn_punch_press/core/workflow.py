@@ -154,10 +154,6 @@ class PunchPressWorkflow:
     def jog_stop(self) -> None:
         self.controller.jog_stop()
 
-    def toggle_pause(self) -> None:
-        self.is_paused = not self.is_paused
-        self.controller.set_pause(self.is_paused)
-
     def toggle_vacuum(self) -> None:
         self.is_vacuum_enabled = not self.is_vacuum_enabled
         self.controller.set_vacuum(self.is_vacuum_enabled)
@@ -184,6 +180,12 @@ class PunchPressWorkflow:
         self.controller.set_variable("LAYOUT", variables.layout)
         self.controller.set_variable("SPEED", variables.speed_percent)
         self.controller.execute("HX0;XQ#MAINLP")
+        # There is no PAUSE button any more: a download releases the pause
+        # (#INIT leaves PAUSE=1), and the app never sets it again. The
+        # controller's own safety inputs still can -- the Stop button and the
+        # light shield force PAUSE=1 in the firmware, and are not overridden.
+        self.controller.set_pause(False)
+        self.is_paused = False
         self.recipe_downloaded = True
 
     def home(self) -> None:

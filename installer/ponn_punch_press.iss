@@ -27,7 +27,7 @@
 ; installer/vendor/gclib_2.4.1.exe (updating the filename references below).
 
 #define MyAppName "Ponn Punch Press"
-#define MyAppVersion "1.0.6"
+#define MyAppVersion "1.0.7"
 #define MyAppExeName "PonnPunchPress.exe"
 
 [Setup]

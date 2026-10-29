@@ -293,12 +293,63 @@ def test_home_axes_reaches_homed_after_polling(window):
     assert window.panel_machine_1.homed_status_label.text() == "Not Homed"
 
 
-def test_pause_toggle_updates_button_label(window):
-    assert window.panel_machine_1.toggle_pause_button.text() == "UN-PAUSE"
-    window.panel_machine_1._on_toggle_pause()
-    assert window.panel_machine_1.toggle_pause_button.text() == "PAUSE"
+def test_there_is_no_pause_button_and_download_unpauses_only_its_own_machine(window):
+    from PySide6.QtWidgets import QPushButton
+
+    for panel in (window.panel_machine_1, window.panel_machine_2):
+        assert not hasattr(panel, "toggle_pause_button")
+        assert not [b for b in panel.findChildren(QPushButton) if "PAUSE" in b.text().upper()]
+
+    window.panel_machine_1.recipe_list.setCurrentRow(0)
+    window.panel_machine_1._on_download_recipe()
+
     assert window.panel_machine_1.workflow.controller.get_variable("PAUSE") == 0.0
-    assert window.panel_machine_2.toggle_pause_button.text() == "UN-PAUSE"
+    assert window.panel_machine_2.workflow.controller.get_variable("PAUSE") == 1.0
+
+
+def test_download_and_restart_fill_the_column_beside_the_jog_arrows(window, qapp):
+    window.show()
+    window.resize(window.minimumSizeHint().width(), window.minimumSizeHint().height() + 60)
+    QTest.qWait(100)
+    panel = window.panel_machine_1
+
+    # They were ~26 px high each when a pause button took a third of the space.
+    for button in (panel.download_button, panel.restart_button):
+        assert button.height() > button.sizeHint().height()
+    # Between the status line and the bottom of the arrows, nothing is left empty.
+    top = panel.download_button.mapTo(panel, panel.download_button.rect().topLeft()).y()
+    restart_bottom = panel.restart_button.mapTo(panel, panel.restart_button.rect().bottomRight()).y()
+    jog_bottom = panel.jog_back_button.mapTo(panel, panel.jog_back_button.rect().bottomRight()).y()
+    assert abs(restart_bottom - jog_bottom) <= 6
+    assert panel.download_button.mapTo(panel, panel.download_button.rect().bottomLeft()).y() < \
+        panel.restart_button.mapTo(panel, panel.restart_button.rect().topLeft()).y()
+    assert top > panel.download_status_label.mapTo(panel, panel.download_status_label.rect().topLeft()).y()
+
+
+def test_the_counter_never_changes_the_section_size_as_the_count_grows(window, qapp):
+    window.show()
+    QTest.qWait(100)
+    panel = window.panel_machine_1
+    label = panel.piece_counter_label
+
+    def snapshot():
+        motion = panel.home_button.parentWidget()
+        return (label.sizeHint(), label.minimumSizeHint(), label.width(), motion.sizeHint(),
+                panel.reset_counter_button.geometry(), panel.minimumSizeHint(), window.minimumSizeHint())
+
+    panel.piece_counter_label.setText("Count: 0")
+    before = snapshot()
+    for value in (7, 42, 1234, 99999):
+        panel.piece_counter_label.setText(f"Count: {value}")
+        qapp.processEvents()
+        assert snapshot() == before, f"layout changed at count {value}"
+
+    # ...and the reserved room really is enough for five digits.
+    needed = label.fontMetrics().horizontalAdvance("Count: 99999")
+    assert label.width() >= needed
+    window.panel_machine_2.piece_counter_label.setText("Count: 99999")  # the other panel too
+    qapp.processEvents()
+    assert window.panel_machine_2.piece_counter_label.width() >= needed
 
 
 def test_simulated_fault_on_one_machine_does_not_estop_the_other(window, no_modal_dialogs):

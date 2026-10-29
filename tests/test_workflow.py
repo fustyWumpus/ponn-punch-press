@@ -85,14 +85,37 @@ def test_start_up_does_not_clobber_existing_count(profile):
     assert sim.get_variable("COUNT") == 42
 
 
-def test_toggle_pause_flips_state_and_sends_command(workflow):
-    workflow.toggle_pause()
+def test_downloading_a_program_releases_the_pause(workflow, sample_recipe):
+    # #INIT leaves the controller paused (PAUSE=1); nothing else un-pauses it now.
+    assert workflow.is_paused is True
+    assert workflow.controller.get_variable("PAUSE") == 1.0
+
+    workflow.download_recipe(sample_recipe)
+
     assert workflow.is_paused is False
     assert workflow.controller.get_variable("PAUSE") == 0.0
 
-    workflow.toggle_pause()
-    assert workflow.is_paused is True
+
+def test_the_workflow_has_no_way_to_pause_again(workflow, sample_recipe):
+    assert not hasattr(workflow, "toggle_pause")
+
+    workflow.download_recipe(sample_recipe)
+    workflow.home()
+    workflow.controller.advance(2.0)
+    workflow.poll()
+    workflow.jog_start(Axis.X)
+    workflow.jog_stop()
+    workflow.reset_counter()
+
+    assert workflow.controller.get_variable("PAUSE") == 0.0  # nothing the app does re-pauses it
+
+
+def test_a_rejected_download_does_not_release_the_pause(workflow, sample_recipe):
+    workflow.controller.set_running(True)
+    with pytest.raises(RecipeDownloadRejected):
+        workflow.download_recipe(sample_recipe)
     assert workflow.controller.get_variable("PAUSE") == 1.0
+    assert workflow.is_paused is True
 
 
 def test_toggle_vacuum_flips_state_and_sends_command(workflow):
@@ -205,15 +228,18 @@ def test_restart_clears_estop(workflow):
 
 
 def test_restart_puts_the_workflow_back_to_the_init_defaults(workflow, sample_recipe):
-    workflow.toggle_pause()  # running (PAUSE=0)
-    workflow.download_recipe(sample_recipe)
+    workflow.download_recipe(sample_recipe)  # releases the pause (PAUSE=0)
     assert workflow.is_paused is False and workflow.recipe_downloaded is True
 
     workflow.restart()
 
     # #INIT sets PAUSE=1 and zeroes the program variables on the controller.
     assert workflow.is_paused is True
+    assert workflow.controller.get_variable("PAUSE") == 1.0
     assert workflow.recipe_downloaded is False
+
+    workflow.download_recipe(sample_recipe)  # ...and the next download releases it again
+    assert workflow.controller.get_variable("PAUSE") == 0.0
 
 
 class _FakeClock:
