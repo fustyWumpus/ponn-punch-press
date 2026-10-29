@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 
-from PySide6.QtCore import QSize, Qt, QTimer
+from PySide6.QtCore import QEvent, QSize, Qt, QTimer
 from PySide6.QtGui import QColor, QIcon, QPainter, QPainterPath, QPixmap
 from PySide6.QtWidgets import (
     QComboBox,
@@ -58,7 +58,7 @@ _JOG_KEYS = {
 }
 
 
-def _make_arrow_icon(rotation_degrees: float, size: int = 64, color: str = "#f0f0f0") -> QIcon:
+def _make_arrow_icon(rotation_degrees: float, size: int = 64, color: str = "#ffffff") -> QIcon:
     """A bold, filled directional-arrow icon (thick stem + wide triangular
     head) drawn on the fly rather than relying on a thin Unicode glyph, whose
     weight and legibility varies a lot by font and renders far too small at
@@ -410,17 +410,18 @@ class MachinePanel(QWidget):
         self.jog_right_button = QPushButton()  # X+
         icon_edge = int(_JOG_BUTTON_HEIGHT * 0.85)
         icon_size = QSize(icon_edge, icon_edge)
-        for button, rotation in (
+        self._jog_arrows = (
             (self.jog_forward_button, -90),
             (self.jog_back_button, 90),
             (self.jog_left_button, 180),
             (self.jog_right_button, 0),
-        ):
+        )
+        for button, _rotation in self._jog_arrows:
             button.setObjectName("jogButton")
             button.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
             button.setFixedSize(_JOG_BUTTON_WIDTH, _JOG_BUTTON_HEIGHT)
-            button.setIcon(_make_arrow_icon(rotation))
             button.setIconSize(icon_size)
+        self._refresh_jog_icons()
 
         jog_column.addWidget(self.jog_forward_button, alignment=Qt.AlignHCenter)
 
@@ -445,6 +446,19 @@ class MachinePanel(QWidget):
             button.released.connect(self.workflow.jog_stop)
 
         return container
+
+    def _refresh_jog_icons(self) -> None:
+        """Arrows are drawn in the current theme's button-text colour, so they
+        stay visible in both light and dark mode (a fixed light colour
+        disappears on a light button)."""
+        color = self.palette().buttonText().color().name()
+        for button, rotation in self._jog_arrows:
+            button.setIcon(_make_arrow_icon(rotation, color=color))
+
+    def changeEvent(self, event) -> None:  # noqa: N802 (Qt override)
+        if event.type() in (QEvent.PaletteChange, QEvent.ApplicationPaletteChange) and hasattr(self, "_jog_arrows"):
+            self._refresh_jog_icons()
+        super().changeEvent(event)
 
     # --- recipe list ---
 

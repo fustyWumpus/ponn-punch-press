@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from dataclasses import dataclass
 from enum import Enum
 
@@ -7,6 +8,15 @@ from ..motion.controller import Axis, MotionController, MotionControllerError
 from .machine_profile import MachineProfile
 from .recipe import Recipe
 from .recipe_mapper import build_controller_variables, counts_to_inches, jog_speeds_counts_per_sec
+
+
+# #INIT takes about a second (a run of `WT 100` delays) and only starts the
+# button-monitor thread (`XQ#PAUSBUT,1`, thread 1) at its very end. Until then
+# thread 1 legitimately reads -1 ("not running"), exactly like a crashed
+# thread. A fault is only believed once thread 1 has been seen running, or this
+# long has passed -- generous so a slow controller isn't misreported, short
+# enough that a genuinely failed init is still caught.
+_INIT_GRACE_SECONDS = 10.0
 
 
 class WorkflowState(Enum):
@@ -76,6 +86,8 @@ class PunchPressWorkflow:
         self._homing_requested = False
         self._prev_error = False
         self._vb_count: int | None = None  # None == "not yet initialized", was VBCount = -1
+        self._clock = time.monotonic  # replaceable in tests
+        self._init_deadline: float | None = None  # set while #INIT may still be starting threads
 
     @property
     def state(self) -> WorkflowState:
@@ -96,6 +108,7 @@ class PunchPressWorkflow:
         self.controller.abort()
         self.controller.download_firmware(dmc_source)
         self.controller.run_program("#INIT")
+        self._init_deadline = self._clock() + _INIT_GRACE_SECONDS
         self._ensure_count_defined()
         self.is_paused = True
         self.recipe_downloaded = False
@@ -185,7 +198,12 @@ class PunchPressWorkflow:
         self.controller.execute("HX")
         self.controller.execute("ST;AM;MO")
         self.controller.run_program("#INIT")
+        self._init_deadline = self._clock() + _INIT_GRACE_SECONDS
         self.estop = False
+        # #INIT puts the controller back to PAUSE=1 and zeroes the program
+        # variables (STARTX... ROWS...), so mirror that here.
+        self.is_paused = True
+        self.recipe_downloaded = False
 
     def reset_counter(self) -> None:
         self._vb_count = 0
@@ -235,6 +253,13 @@ class PunchPressWorkflow:
     def _check_for_fault(self) -> FaultInfo | None:
         xq0 = self.controller.get_variable("_XQ0")
         xq1 = self.controller.get_variable("_XQ1")
+
+        if self._init_deadline is not None:
+            if xq1 != -1 or self._clock() >= self._init_deadline:
+                self._init_deadline = None  # init finished (or overran): judge normally
+            else:
+                return None  # #INIT still starting its threads -- not a fault
+
         if (xq0 != -1 and xq1 != -1) or self.estop:
             return None
 

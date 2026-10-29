@@ -20,6 +20,18 @@ def qapp():
     yield QApplication.instance() or QApplication([])
 
 
+def test_a_fresh_install_defaults_to_the_real_controller_addresses(tmp_path):
+    """The installer ships no settings, so a new PC's first-run profiles come
+    straight from these defaults."""
+    from ponn_punch_press.core.machine_profile_store import MachineProfileStore
+
+    store = MachineProfileStore(base_dir=tmp_path / "fresh")
+    profiles = {m["name"]: app_module._load_or_create_profile(store, m["name"], m["default_ip"], m["key"]) for m in app_module._MACHINES}
+
+    assert profiles["Machine 1"].ip_address == "192.168.1.58"
+    assert profiles["Machine 2"].ip_address == "192.168.1.60"
+
+
 def test_main_reports_error_and_exits_cleanly_when_controller_build_fails(qapp, monkeypatch, tmp_path):
     monkeypatch.setattr(sys, "argv", ["ponn-punch-press"])  # no --simulate
 

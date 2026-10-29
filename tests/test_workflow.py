@@ -189,6 +189,82 @@ def test_restart_clears_estop(workflow):
     assert workflow.estop is False
 
 
+def test_restart_puts_the_workflow_back_to_the_init_defaults(workflow, sample_recipe):
+    workflow.toggle_pause()  # running (PAUSE=0)
+    workflow.download_recipe(sample_recipe)
+    assert workflow.is_paused is False and workflow.recipe_downloaded is True
+
+    workflow.restart()
+
+    # #INIT sets PAUSE=1 and zeroes the program variables on the controller.
+    assert workflow.is_paused is True
+    assert workflow.recipe_downloaded is False
+
+
+class _FakeClock:
+    def __init__(self) -> None:
+        self.now = 1000.0
+
+    def __call__(self) -> float:
+        return self.now
+
+
+def _mid_init(workflow):
+    """The controller as seen ~0.5 s after XQ#INIT: thread 0 is at a `WT 100`
+    line (the real fault dump said XQ0=180) and #PAUSBUT (thread 1) has not
+    been started yet, so it reads -1 -- same as a crashed thread."""
+    workflow.controller.set_variable("_XQ0", 180)
+    workflow.controller.set_variable("_XQ1", -1)
+
+
+def test_restart_does_not_report_a_fault_while_init_is_still_starting_threads(workflow):
+    """Regression: pressing RESTART popped "Motion Control Program Error"
+    (XQ0=180, XQ1=-1) because the 500 ms poll landed inside #INIT, before it
+    reached XQ#PAUSBUT,1."""
+    workflow.restart()
+    _mid_init(workflow)
+
+    result = workflow.poll()
+
+    assert result.new_fault is None
+    assert workflow.estop is False
+
+
+def test_a_thread_that_dies_right_after_init_is_still_reported(workflow):
+    workflow.restart()
+    _mid_init(workflow)
+    assert workflow.poll().new_fault is None
+
+    workflow.controller.set_variable("_XQ1", 1)  # init finished: thread 1 is up
+    assert workflow.poll().new_fault is None
+
+    workflow.controller.set_variable("_XQ1", -1)  # ...and now it has died
+    result = workflow.poll()
+    assert result.new_fault is not None
+    assert workflow.estop is True
+
+
+def test_an_init_that_never_starts_its_threads_is_reported_after_the_grace_period(workflow):
+    clock = _FakeClock()
+    workflow._clock = clock
+    workflow.restart()
+    _mid_init(workflow)
+
+    clock.now += 5
+    assert workflow.poll().new_fault is None
+
+    clock.now += 6  # 11 s since restart, thread 1 still absent
+    assert workflow.poll().new_fault is not None
+
+
+def test_start_up_also_gets_the_init_grace_period(profile):
+    wf = PunchPressWorkflow(Simulator(), profile)
+    wf.start_up("192.168.1.10", "; dummy dmc source")
+    _mid_init(wf)
+
+    assert wf.poll().new_fault is None
+
+
 def test_reset_counter_zeroes_both_vb_and_controller_count(workflow):
     workflow.controller.set_variable("COUNT", 99)
     workflow.reset_counter()

@@ -117,6 +117,22 @@ def test_download_status_label_follows_the_download_state(window):
     assert panel_1.download_status_label.property("downloaded") is False
 
 
+def test_jog_arrows_follow_the_theme_so_they_stay_visible_in_light_and_dark(window):
+    from PySide6.QtGui import QColor, QPalette
+
+    panel = window.panel_machine_1
+
+    def arrow_colour() -> str:
+        image = panel.jog_right_button.icon().pixmap(64, 64).toImage()
+        return image.pixelColor(16, 32).name()  # inside the arrow's stem
+
+    for colour in ("#101010", "#f0f0f0"):  # a light theme's text, a dark theme's text
+        palette = panel.palette()
+        palette.setColor(QPalette.ButtonText, QColor(colour))
+        panel.setPalette(palette)
+        assert arrow_colour() == colour
+
+
 def test_every_button_flashes_when_clicked_then_clears(window, qapp):
     from PySide6.QtWidgets import QPushButton
 
@@ -400,6 +416,76 @@ def test_fullscreen_menu_action_toggles_fullscreen_and_stays_in_sync(qapp, tmp_p
     qapp.processEvents()
     assert win.isFullScreen() is False
     assert win.fullscreen_action.isChecked() is False
+    win.panel_machine_1.shut_down()
+    win.panel_machine_2.shut_down()
+
+
+def test_fullscreen_toggle_follows_the_real_window_state_not_the_check_mark(qapp, tmp_path):
+    """If the menu's check mark ever disagrees with the window, the toggle
+    used to trust the mark: the click re-requested the state the window was
+    already in, and "it won't leave fullscreen"."""
+    win = _new_window(MachineProfileStore(base_dir=tmp_path / "fs_desync"), qapp)
+    win.show()
+    win.set_fullscreen(True)
+    qapp.processEvents()
+    assert win.isFullScreen() is True
+
+    win.fullscreen_action.setChecked(False)  # out of sync; emits nothing
+    win.fullscreen_action.trigger()  # the mark flips to True, window is already fullscreen
+    qapp.processEvents()
+
+    assert win.isFullScreen() is False
+    assert win.fullscreen_action.isChecked() is False
+    win.panel_machine_1.shut_down()
+    win.panel_machine_2.shut_down()
+
+
+def test_escape_leaves_fullscreen_and_does_nothing_otherwise(qapp, tmp_path):
+    win = _new_window(MachineProfileStore(base_dir=tmp_path / "fs_escape"), qapp)
+    win.show()
+    qapp.processEvents()
+
+    win._leave_fullscreen_shortcut.activated.emit()  # not fullscreen: no effect
+    assert win.isFullScreen() is False
+
+    win.set_fullscreen(True)
+    qapp.processEvents()
+    win._leave_fullscreen_shortcut.activated.emit()
+    qapp.processEvents()
+    assert win.isFullScreen() is False
+    win.panel_machine_1.shut_down()
+    win.panel_machine_2.shut_down()
+
+
+def test_the_exit_recheck_does_not_undo_a_quick_re_entry(qapp, tmp_path):
+    """F11, F11 within the re-check delay: the first exit's delayed check must
+    not see the *new* fullscreen window and throw it out again."""
+    win = _new_window(MachineProfileStore(base_dir=tmp_path / "fs_quick"), qapp)
+    win.show()
+    win.set_fullscreen(True)
+    win.set_fullscreen(False)
+    win.set_fullscreen(True)
+
+    QTest.qWait(800)  # well past the re-check delay
+
+    assert win.isFullScreen() is True
+    win.panel_machine_1.shut_down()
+    win.panel_machine_2.shut_down()
+
+
+def test_leaving_fullscreen_is_retried_if_the_first_attempt_is_ignored(qapp, tmp_path, monkeypatch):
+    win = _new_window(MachineProfileStore(base_dir=tmp_path / "fs_retry"), qapp)
+    win.show()
+    win.set_fullscreen(True)
+    qapp.processEvents()
+
+    monkeypatch.setattr(win, "showMaximized", lambda: None)  # the window manager ignores it
+    monkeypatch.setattr(win, "showNormal", lambda: None)
+    win.set_fullscreen(False)
+    assert win.isFullScreen() is True
+
+    win._ensure_left_fullscreen()  # what the delayed re-check does
+    assert win.isFullScreen() is False
     win.panel_machine_1.shut_down()
     win.panel_machine_2.shut_down()
 

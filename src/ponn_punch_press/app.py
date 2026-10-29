@@ -5,6 +5,7 @@ import shutil
 import sys
 from pathlib import Path
 
+from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
@@ -22,8 +23,8 @@ from .ui.machine_panel import MachinePanel
 # both still expose the same variable interface this app talks to
 # (STARTX, PAUSE, HOMED, SPEED, ...).
 _MACHINES = [
-    {"key": "machine_1", "name": "Machine 1", "default_ip": "192.168.1.11"},
-    {"key": "machine_2", "name": "Machine 2", "default_ip": "192.168.1.12"},
+    {"key": "machine_1", "name": "Machine 1", "default_ip": "192.168.1.58"},
+    {"key": "machine_2", "name": "Machine 2", "default_ip": "192.168.1.60"},
 ]
 
 
@@ -43,6 +44,38 @@ def _get_firmware_source(machine_key: str) -> str:
 
 def _icon_path() -> Path:
     return _bundle_root() / "installer" / "assets" / "app_icon.ico"
+
+
+def _windows_apps_use_dark_theme() -> bool:
+    """Windows' own "choose your default app mode" setting (Settings >
+    Personalization > Colors), read straight from the registry."""
+    try:
+        import winreg
+
+        with winreg.OpenKey(
+            winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        ) as key:
+            return winreg.QueryValueEx(key, "AppsUseLightTheme")[0] == 0
+    except OSError:
+        return False
+
+
+def _ensure_dark_mode_support(app: QApplication) -> None:
+    """Make the app follow the Windows light/dark app mode on Windows 10.
+
+    Windows 11 gets Qt's "windows11" style, which follows dark mode. Windows
+    10 falls back to "windowsvista" (or "windows"), which ignores it -- the
+    whole window stays light and the (light-coloured) jog arrows vanish. Fusion
+    follows the system colour scheme, so use it wherever the native style
+    can't. Windows 11's own style is left alone."""
+    if sys.platform != "win32":
+        return
+    if app.style().objectName().lower() in ("windowsvista", "windows"):
+        app.setStyle("Fusion")
+    hints = app.styleHints()
+    # Qt couldn't tell what the system is set to: ask Windows directly.
+    if hints.colorScheme() == Qt.ColorScheme.Unknown and _windows_apps_use_dark_theme():
+        hints.setColorScheme(Qt.ColorScheme.Dark)
 
 
 def _set_windows_app_user_model_id() -> None:
@@ -130,6 +163,7 @@ def main() -> int:
 
     _set_windows_app_user_model_id()
     app = QApplication.instance() or QApplication(sys.argv)
+    _ensure_dark_mode_support(app)
     icon_path = _icon_path()
     if icon_path.is_file():
         app.setWindowIcon(QIcon(str(icon_path)))

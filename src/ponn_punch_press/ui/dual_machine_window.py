@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import struct
 
-from PySide6.QtCore import QByteArray, QEvent, QRect, Qt
-from PySide6.QtGui import QAction, QGuiApplication, QKeySequence
+from PySide6.QtCore import QByteArray, QEvent, QRect, Qt, QTimer
+from PySide6.QtGui import QAction, QGuiApplication, QKeySequence, QShortcut
 from PySide6.QtWidgets import QMainWindow, QPushButton, QSplitter
 
 from .about_dialog import AboutDialog
@@ -109,10 +109,10 @@ QPushButton#dangerButton:pressed, QPushButton#exitButton:pressed {
 QLabel#downloadStatusLabel {
     font-size: 11pt;
     font-weight: 600;
-    color: #e0a030;
+    color: #c0820a;
 }
 QLabel#downloadStatusLabel[downloaded="true"] {
-    color: #3fb950;
+    color: #2a9d43;
 }
 /* Brief highlight after any button is clicked -- see click_feedback.py. Kept
    last so it wins over the per-button rules above. */
@@ -129,6 +129,7 @@ QPushButton#dangerButton[flash="true"], QPushButton#exitButton[flash="true"] {
 """
 
 _GEOMETRY_MAGIC = 0x01D9D0CB
+_LEAVE_FULLSCREEN_RECHECK_MS = 400
 
 
 def _saved_geometry_is_sane(blob: bytes) -> bool:
@@ -172,6 +173,7 @@ class DualMachineWindow(QMainWindow):
         # Where leaving fullscreen returns to. True is also the right default
         # when the app *starts* in fullscreen (restored from last session).
         self._maximized_before_fullscreen = True
+        self._fullscreen_requested = False  # what the user last asked for
         self._build_menu()
 
         self.splitter = QSplitter(Qt.Horizontal)
@@ -201,8 +203,13 @@ class DualMachineWindow(QMainWindow):
         self.fullscreen_action = QAction("&Full Screen", self)
         self.fullscreen_action.setCheckable(True)
         self.fullscreen_action.setShortcut(QKeySequence(Qt.Key_F11))
-        self.fullscreen_action.triggered.connect(self.set_fullscreen)
+        self.fullscreen_action.triggered.connect(self._on_fullscreen_action)
         view_menu.addAction(self.fullscreen_action)
+
+        # Esc is a second, always-available way out (F11 and the menu are the
+        # others). Does nothing unless the window is actually fullscreen.
+        self._leave_fullscreen_shortcut = QShortcut(QKeySequence(Qt.Key_Escape), self)
+        self._leave_fullscreen_shortcut.activated.connect(lambda: self.set_fullscreen(False))
 
         # Top-right corner of the menu bar -- the one strip that stays visible
         # in fullscreen, where there is no title-bar close button. Same effect
@@ -213,16 +220,38 @@ class DualMachineWindow(QMainWindow):
         self.exit_button.clicked.connect(self.close)
         self.menuBar().setCornerWidget(self.exit_button, Qt.TopRightCorner)
 
+    def _on_fullscreen_action(self, _checked: bool = False) -> None:
+        # Toggle from the window's real state, never from the menu's check
+        # mark: if the two ever disagree, trusting the mark turns the first
+        # click/F11 into a silent no-op ("it won't leave fullscreen").
+        self.set_fullscreen(not self.isFullScreen())
+
     def set_fullscreen(self, enabled: bool) -> None:
         if enabled == self.isFullScreen():
+            self.fullscreen_action.setChecked(self.isFullScreen())
             return
+        self._fullscreen_requested = enabled
         if enabled:
             self._maximized_before_fullscreen = self.isMaximized()
             self.showFullScreen()
-        elif self._maximized_before_fullscreen:
-            self.showMaximized()
         else:
-            self.showNormal()
+            if self._maximized_before_fullscreen:
+                self.showMaximized()
+            else:
+                self.showNormal()
+            # Windows can occasionally ignore the first request (the window
+            # manager is mid-transition); check a moment later and insist.
+            QTimer.singleShot(_LEAVE_FULLSCREEN_RECHECK_MS, self._ensure_left_fullscreen)
+
+    def _ensure_left_fullscreen(self) -> None:
+        # Only if nobody asked for fullscreen again in the meantime -- a quick
+        # F11, F11 must not be undone by the re-check of the first exit.
+        if self.isFullScreen() and not self._fullscreen_requested:
+            self.setWindowState(self.windowState() & ~Qt.WindowFullScreen)
+            if self._maximized_before_fullscreen:
+                self.showMaximized()
+            else:
+                self.showNormal()
 
     def changeEvent(self, event) -> None:  # noqa: N802 (Qt override)
         if event.type() == QEvent.WindowStateChange:
