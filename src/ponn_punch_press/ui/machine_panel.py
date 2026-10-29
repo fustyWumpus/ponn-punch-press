@@ -38,6 +38,11 @@ _DIGIT3_SPIN_WIDTH = 90  # fits a 3-digit value plus the spinner arrows without 
 _JOG_BUTTON_WIDTH = 62  # ~30% wider than the previous 48 px square
 _JOG_BUTTON_HEIGHT = 54  # slightly taller than the previous 48 px
 _JOG_SIDE_GAP = 5  # gap between left/right, independent of button width
+# Inner margins of the Programs / Punch Pattern / Motion Control boxes (left,
+# top, right, bottom). The style default is ~9 px all round, which cost ~20 px
+# of height -- the difference between fitting a 1080p screen at 150% scaling
+# (1280x720 usable) and not. The top margin still clears the box title.
+_GROUP_MARGINS = (6, 4, 6, 4)
 
 # The legacy app's AllowKeyJog flag was declared but never set anywhere in the
 # source (VB Booleans default False), so arrow/numpad keyboard jogging was
@@ -115,6 +120,12 @@ class MachinePanel(QWidget):
         self._key_jog_active = False
         self._last_x_position = 0.0
         self._last_y_position = 0.0
+        # No on-screen inputs for the vacuum durations any more, but programs
+        # still carry them (some are 5 or 10, not 0) and the controller still
+        # receives them -- so remember the selected program's values instead
+        # of silently saving/downloading zeros.
+        self._vacuum_on = 0
+        self._vacuum_off = 0
 
         self._build_ui()
 
@@ -183,13 +194,15 @@ class MachinePanel(QWidget):
 
     def _build_ui(self) -> None:
         root = QVBoxLayout(self)
-        root.setSpacing(4)
+        root.setSpacing(0)
+        root.setContentsMargins(9, 0, 9, 6)  # no top margin: the header sits right under the menu bar
         root.addWidget(self._build_header())
 
         upper_row = QHBoxLayout()
         upper_row.addWidget(self._build_recipe_panel(), stretch=1)
         upper_row.addWidget(self._build_pattern_panel(), stretch=3)
         root.addLayout(upper_row, stretch=3)
+        root.addSpacing(3)
 
         root.addWidget(self._build_motion_panel(), stretch=2)
 
@@ -202,11 +215,16 @@ class MachinePanel(QWidget):
         header = QFrame()
         header.setObjectName("machineHeader")
         layout = QHBoxLayout(header)
-        layout.setContentsMargins(0, 4, 0, 4)
+        layout.setContentsMargins(0, 0, 0, 0)
 
         layout.addStretch(1)
         self.machine_name_label = QLabel(self.profile.name)
         self.machine_name_label.setObjectName("machineNameLabel")
+        # A font's line box has built-in leading above the capitals and below
+        # the baseline, which reads as extra white space around a title this
+        # small. Negative margins trim it (the name has no descenders, so
+        # nothing is cut off); they scale with the font, not with pixels.
+        self.machine_name_label.setContentsMargins(0, -1, 0, -3)
         layout.addWidget(self.machine_name_label)
         layout.addStretch(1)
 
@@ -216,6 +234,7 @@ class MachinePanel(QWidget):
         box = QGroupBox("Programs")
         box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         layout = QVBoxLayout(box)
+        layout.setContentsMargins(*_GROUP_MARGINS)
 
         self.recipe_list = QListWidget()
         self.recipe_list.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -239,7 +258,8 @@ class MachinePanel(QWidget):
         box = QGroupBox("Punch Pattern")
         box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         layout = QGridLayout(box)
-        layout.setVerticalSpacing(4)
+        layout.setContentsMargins(*_GROUP_MARGINS)
+        layout.setVerticalSpacing(2)
         row = 0
 
         # Spans columns 0-1 only (not the full 0-3), so its right edge lines
@@ -293,11 +313,6 @@ class MachinePanel(QWidget):
         layout.addWidget(self.use_current_button, row, 0, 1, 2)
         row += 1
 
-        self.vac_on_spin = self._add_int_field(layout, row, "Vacuum On Duration:")
-        row += 1
-        self.vac_off_spin = self._add_int_field(layout, row, "Vacuum Off Duration:")
-        row += 1
-
         self.speed_spin = self._add_int_field(layout, row, "Speed (% of max):")
         self.speed_spin.setRange(1, 100)
         self.speed_spin.setValue(100)
@@ -324,6 +339,7 @@ class MachinePanel(QWidget):
         box = QGroupBox("Motion Control")
         box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         outer = QHBoxLayout(box)
+        outer.setContentsMargins(*_GROUP_MARGINS)
 
         left_column = QVBoxLayout()
         left_column.setSpacing(4)
@@ -496,8 +512,8 @@ class MachinePanel(QWidget):
         self.y_spacing_spin.setValue(recipe.y_spacing)
         self.x_start_spin.setValue(recipe.x_start)
         self.y_start_spin.setValue(recipe.y_start)
-        self.vac_on_spin.setValue(recipe.vacuum_on)
-        self.vac_off_spin.setValue(recipe.vacuum_off)
+        self._vacuum_on = recipe.vacuum_on
+        self._vacuum_off = recipe.vacuum_off
         self.speed_spin.setValue(recipe.speed_percent)
         self.comments_edit.setPlainText(recipe.comments)
 
@@ -511,8 +527,8 @@ class MachinePanel(QWidget):
             y_spacing=self.y_spacing_spin.value(),
             x_start=self.x_start_spin.value(),
             y_start=self.y_start_spin.value(),
-            vacuum_on=self.vac_on_spin.value(),
-            vacuum_off=self.vac_off_spin.value(),
+            vacuum_on=self._vacuum_on,
+            vacuum_off=self._vacuum_off,
             speed_percent=self.speed_spin.value(),
             comments=self.comments_edit.toPlainText(),
         )
@@ -525,8 +541,8 @@ class MachinePanel(QWidget):
         self.y_spacing_spin.setValue(0)
         self.x_start_spin.setValue(0)
         self.y_start_spin.setValue(0)
-        self.vac_on_spin.setValue(0)
-        self.vac_off_spin.setValue(0)
+        self._vacuum_on = 0
+        self._vacuum_off = 0
         self.speed_spin.setValue(100)
         self.comments_edit.setPlainText("")
         self.workflow.recipe_downloaded = False

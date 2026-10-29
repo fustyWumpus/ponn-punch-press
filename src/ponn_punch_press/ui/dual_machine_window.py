@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import re
 import struct
 
-from PySide6.QtCore import QByteArray, QEvent, QRect, Qt, QTimer
+from PySide6.QtCore import QByteArray, QCoreApplication, QEvent, QRect, QSize, Qt, QTimer
 from PySide6.QtGui import QAction, QGuiApplication, QKeySequence, QShortcut
-from PySide6.QtWidgets import QMainWindow, QPushButton, QSplitter
+from PySide6.QtWidgets import QMainWindow, QPushButton, QSplitter, QWidget
 
 from .about_dialog import AboutDialog
 from .click_feedback import install_click_feedback
@@ -74,19 +75,8 @@ QLabel#statusLabel {
     font-weight: 600;
 }
 QLabel#machineNameLabel {
-    font-size: 20pt;
+    font-size: 10pt;
     font-weight: 700;
-}
-#machineHeader {
-    border-bottom: 3px solid #888;
-    padding-bottom: 4px;
-    margin-bottom: 8px;
-}
-#machine2Panel #machineHeader {
-    border-bottom-color: #2f6fed;
-}
-#machine1Panel #machineHeader {
-    border-bottom-color: #e08a1e;
 }
 QPushButton#jogButton {
     padding: 0px;
@@ -131,6 +121,22 @@ QPushButton#dangerButton[flash="true"], QPushButton#exitButton[flash="true"] {
 _GEOMETRY_MAGIC = 0x01D9D0CB
 _LEAVE_FULLSCREEN_RECHECK_MS = 400
 
+# Text sizes tried, largest first, until the whole window fits the space the
+# screen leaves it. 1.0 is the design size (what a 1920x1080 screen at 150%
+# scaling -- 1280x720 usable -- gets in fullscreen); the smaller steps only
+# kick in on a screen, or a maximized window, with less room than that.
+_TEXT_SCALES = (1.0, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7)
+_REFIT_DELAY_MS = 150  # lets the window manager finish a state change first
+
+
+def _scaled_stylesheet(scale: float) -> str:
+    """The stylesheet with every font-size multiplied by `scale`."""
+    return re.sub(
+        r"font-size:\s*([\d.]+)pt",
+        lambda match: f"font-size: {float(match.group(1)) * scale:.2f}pt",
+        _STYLESHEET,
+    )
+
 
 def _saved_geometry_is_sane(blob: bytes) -> bool:
     """Checks a QWidget::saveGeometry() blob before restoreGeometry() touches
@@ -169,7 +175,14 @@ class DualMachineWindow(QMainWindow):
         panel_machine_1.setObjectName("machine1Panel")
 
         self.setWindowTitle("Ponn Punch Press")
-        self.setStyleSheet(_STYLESHEET)
+        self._text_scale = 1.0
+        self.setStyleSheet(_scaled_stylesheet(self._text_scale))
+        # Owned by the window, so it dies with it, and restarting it merges a
+        # burst of state changes into a single re-fit.
+        self._refit_timer = QTimer(self)
+        self._refit_timer.setSingleShot(True)
+        self._refit_timer.setInterval(_REFIT_DELAY_MS)
+        self._refit_timer.timeout.connect(self.fit_text_to_screen)
         # Where leaving fullscreen returns to. True is also the right default
         # when the app *starts* in fullscreen (restored from last session).
         self._maximized_before_fullscreen = True
@@ -258,7 +271,63 @@ class DualMachineWindow(QMainWindow):
             # Keep the menu check mark honest however fullscreen was entered
             # or left. setChecked() doesn't emit `triggered`, so no feedback loop.
             self.fullscreen_action.setChecked(self.isFullScreen())
+            # Fullscreen has more room than a maximized window (no taskbar or
+            # title bar), so the best text size changes with the state.
+            self._refit_timer.start()
         super().changeEvent(event)
+
+    # --- keeping everything on screen ---
+
+    def _available_size(self) -> QSize | None:
+        """Room this window's contents can occupy on its screen: all of it in
+        fullscreen, otherwise the work area minus the window frame."""
+        screen = self.screen()
+        if screen is None:
+            return None
+        if self.isFullScreen():
+            return screen.geometry().size()
+        frame = self.frameGeometry().size() - self.geometry().size()
+        return screen.availableGeometry().size() - frame
+
+    def fit_text_to_screen(self) -> None:
+        available = self._available_size()
+        if available is not None:
+            self.fit_text_to_size(available.width(), available.height())
+
+    def fit_text_to_size(self, width: int, height: int) -> float:
+        """Use the largest text size (from _TEXT_SCALES) at which the whole
+        window -- every button and label -- fits in width x height, so nothing
+        is ever cut off or pushed past the screen edge. Returns the scale."""
+        state = self.windowState()
+        chosen = _TEXT_SCALES[-1]
+        for scale in _TEXT_SCALES:
+            self._apply_text_scale(scale)
+            hint = self.minimumSizeHint()
+            if hint.width() <= width and hint.height() <= height:
+                chosen = scale
+                break
+        else:
+            self._apply_text_scale(chosen)  # nothing fits: smallest text is the best we can do
+        # Changing the minimum size must never knock the window out of
+        # fullscreen/maximized -- put the state back if a platform dropped it.
+        if self.windowState() != state:
+            self.setWindowState(state)
+        return chosen
+
+    def _apply_text_scale(self, scale: float) -> None:
+        if scale == self._text_scale:
+            return
+        self._text_scale = scale
+        self.setStyleSheet(_scaled_stylesheet(scale))
+        # minimumSizeHint() is stale right after a stylesheet change (verified:
+        # off by 5-70 px). Only polishing every child and then delivering the
+        # pending posted events (the layout invalidations) makes it exact.
+        # Posted events only -- not processEvents(), which would also run
+        # timers and window-state handling in the middle of this.
+        for child in self.findChildren(QWidget):
+            child.ensurePolished()
+        QCoreApplication.sendPostedEvents(None, 0)
+        QCoreApplication.sendPostedEvents(None, QEvent.LayoutRequest)
 
     def start_up(self) -> None:
         self.panel_machine_2.start_up()
@@ -277,8 +346,10 @@ class DualMachineWindow(QMainWindow):
                 # never shows the window, so without this the app would run
                 # invisibly whenever a saved geometry existed.
                 self.show()
+                self._refit_timer.start()
                 return True
         self.showMaximized()
+        self._refit_timer.start()
         return False
 
     def closeEvent(self, event) -> None:  # noqa: N802 (Qt override)

@@ -5,6 +5,7 @@ pause, simulated fault) on BOTH machines independently and asserting nothing
 crashes or leaks state between panels.
 """
 import os
+import re
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
@@ -131,6 +132,61 @@ def test_jog_arrows_follow_the_theme_so_they_stay_visible_in_light_and_dark(wind
         palette.setColor(QPalette.ButtonText, QColor(colour))
         panel.setPalette(palette)
         assert arrow_colour() == colour
+
+
+def test_no_vacuum_duration_inputs_but_the_programs_values_are_kept(window):
+    from PySide6.QtWidgets import QLabel
+
+    panel = window.panel_machine_1  # fixture machine1_595X073 has vacuum on/off = 10/10
+    assert not hasattr(panel, "vac_on_spin") and not hasattr(panel, "vac_off_spin")
+    assert not [label for label in panel.findChildren(QLabel) if "Vacuum" in label.text()]
+
+    names = [panel.recipe_list.item(i).text() for i in range(panel.recipe_list.count())]
+    panel.recipe_list.setCurrentRow(names.index("machine1_595X073"))
+
+    # Saving the form back must not zero them...
+    saved = panel._recipe_from_form("x.txt")
+    assert (saved.vacuum_on, saved.vacuum_off) == (10, 10)
+    # ...and neither must what is sent to the controller.
+    panel._on_download_recipe()
+    assert panel.workflow.controller.get_variable("VACON") == 10
+    assert panel.workflow.controller.get_variable("VACOFF") == 10
+
+    panel._clear_form()
+    assert (panel._recipe_from_form("x.txt").vacuum_on, panel._recipe_from_form("x.txt").vacuum_off) == (0, 0)
+
+
+def test_machine_title_is_a_compact_ten_point_label(window):
+    for panel in (window.panel_machine_1, window.panel_machine_2):
+        assert panel.machine_name_label.font().pointSizeF() == pytest.approx(10.0)
+
+
+def test_stylesheet_scaling_multiplies_every_font_size():
+    from ponn_punch_press.ui.dual_machine_window import _STYLESHEET, _scaled_stylesheet
+
+    original = [float(v) for v in re.findall(r"font-size:\s*([\d.]+)pt", _STYLESHEET)]
+    halved = [float(v) for v in re.findall(r"font-size:\s*([\d.]+)pt", _scaled_stylesheet(0.5))]
+    assert original and halved == pytest.approx([v / 2 for v in original])
+
+
+def test_text_shrinks_only_as_far_as_needed_to_fit_the_available_room(window, qapp):
+    wide = 10_000  # width is not the constraint here
+    full_height = window.minimumSizeHint().height()
+
+    assert window.fit_text_to_size(wide, full_height) == 1.0  # fits: stays full size
+
+    tight = full_height - 5  # a small squeeze; the test platform's fonts barely shrink
+    scale = window.fit_text_to_size(wide, tight)
+    assert scale < 1.0
+    assert window.minimumSizeHint().height() <= tight  # everything fits again
+
+    assert window.fit_text_to_size(wide, full_height) == 1.0  # room again: back to full size
+
+
+def test_text_stops_at_the_smallest_size_when_nothing_fits(window):
+    from ponn_punch_press.ui.dual_machine_window import _TEXT_SCALES
+
+    assert window.fit_text_to_size(100, 100) == min(_TEXT_SCALES)
 
 
 def test_every_button_flashes_when_clicked_then_clears(window, qapp):
