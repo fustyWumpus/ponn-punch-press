@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (
     QLineEdit,
     QMessageBox,
     QPushButton,
+    QSpinBox,
     QVBoxLayout,
 )
 
@@ -55,6 +56,14 @@ class PreferencesDialog(QDialog):
         form.addRow("X Leadscrew Pitch (in/rev):", self.x_lead_spin)
         self.y_lead_spin = self._make_double_spin()
         form.addRow("Y Leadscrew Pitch (in/rev):", self.y_lead_spin)
+        self.steps_per_rev_spin = QSpinBox()
+        self.steps_per_rev_spin.setRange(1, 1_000_000)
+        self.steps_per_rev_spin.setToolTip(
+            "Pulses the controller sends per motor revolution: full steps per rev x microstepping "
+            "(e.g. 200-step motor at 1/10 microstepping = 2000). Scales every speed and distance "
+            "sent to this machine, and the X/Y position readout."
+        )
+        form.addRow("Steps per Motor Revolution:", self.steps_per_rev_spin)
         self.max_x_speed_spin = self._make_double_spin(maximum=5000)
         form.addRow("Max X Speed (in/min):", self.max_x_speed_spin)
         self.max_y_speed_spin = self._make_double_spin(maximum=5000)
@@ -83,6 +92,7 @@ class PreferencesDialog(QDialog):
         self.recipe_path_edit.setText(profile.recipe_path)
         self.x_lead_spin.setValue(profile.x_lead)
         self.y_lead_spin.setValue(profile.y_lead)
+        self.steps_per_rev_spin.setValue(profile.steps_per_rev)
         self.max_x_speed_spin.setValue(profile.max_x_speed)
         self.max_y_speed_spin.setValue(profile.max_y_speed)
         self.x_jog_speed_spin.setValue(profile.x_jog_speed)
@@ -108,6 +118,7 @@ class PreferencesDialog(QDialog):
             recipe_path=self.recipe_path_edit.text(),
             x_lead=self.x_lead_spin.value(),
             y_lead=self.y_lead_spin.value(),
+            steps_per_rev=self.steps_per_rev_spin.value(),
             max_x_speed=self.max_x_speed_spin.value(),
             max_y_speed=self.max_y_speed_spin.value(),
             x_jog_speed=self.x_jog_speed_spin.value(),

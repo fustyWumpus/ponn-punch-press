@@ -35,7 +35,8 @@ from .preferences_dialog import PreferencesDialog
 _POLL_INTERVAL_MS = 500
 _STARTUP_POLL_INTERVAL_MS = 2000  # matches PollTimer.Interval = 2000 at first load
 _DIGIT3_SPIN_WIDTH = 90  # fits a 3-digit value plus the spinner arrows without clipping
-_JOG_BUTTON_SIZE = 48  # sized to roughly match the right-hand controls column's height
+_JOG_BUTTON_WIDTH = 62  # ~30% wider than the previous 48 px square
+_JOG_BUTTON_HEIGHT = 54  # slightly taller than the previous 48 px
 _JOG_SIDE_GAP = 5  # gap between left/right, independent of button width
 
 # The legacy app's AllowKeyJog flag was declared but never set anywhere in the
@@ -382,6 +383,11 @@ class MachinePanel(QWidget):
         self.restart_button.clicked.connect(self._on_restart)
         right_column.addWidget(self.restart_button)
 
+        # Smaller text/padding on the three action buttons frees width for the
+        # larger jog arrows.
+        for button in (self.download_button, self.toggle_pause_button, self.restart_button):
+            button.setProperty("compact", True)
+
         right_column.addStretch(1)
 
         return box
@@ -396,7 +402,8 @@ class MachinePanel(QWidget):
         self.jog_back_button = QPushButton()  # back = Y-
         self.jog_left_button = QPushButton()  # X-
         self.jog_right_button = QPushButton()  # X+
-        icon_size = QSize(int(_JOG_BUTTON_SIZE * 0.85), int(_JOG_BUTTON_SIZE * 0.85))
+        icon_edge = int(_JOG_BUTTON_HEIGHT * 0.85)
+        icon_size = QSize(icon_edge, icon_edge)
         for button, rotation in (
             (self.jog_forward_button, -90),
             (self.jog_back_button, 90),
@@ -405,7 +412,7 @@ class MachinePanel(QWidget):
         ):
             button.setObjectName("jogButton")
             button.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-            button.setFixedSize(_JOG_BUTTON_SIZE, _JOG_BUTTON_SIZE)
+            button.setFixedSize(_JOG_BUTTON_WIDTH, _JOG_BUTTON_HEIGHT)
             button.setIcon(_make_arrow_icon(rotation))
             button.setIconSize(icon_size)
 

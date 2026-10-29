@@ -153,6 +153,22 @@ def test_jog_start_sends_correct_signed_speed(workflow, profile):
     assert y == pytest.approx(-y_speed)
 
 
+@pytest.mark.parametrize("steps_per_rev", [800, 1600, 3200, 16384])
+def test_position_readout_agrees_with_jog_speed_for_any_steps_per_rev(steps_per_rev):
+    """Jogging for 1 s at 80 in/min must read ~1.333 in on the position
+    display regardless of steps_per_rev -- the jog command and the readout
+    have to use the same counts-per-inch, or speed and position disagree."""
+    profile = MachineProfile(name="Machine 1", ip_address="192.168.1.10", steps_per_rev=steps_per_rev)
+    wf = PunchPressWorkflow(Simulator(), profile)
+    wf.start_up("192.168.1.10", "; dummy dmc source")
+
+    wf.jog_start(Axis.X)
+    wf.controller.advance(1.0)
+    wf.jog_stop()
+
+    assert wf.poll().x_position_inches == pytest.approx(80 / 60)
+
+
 def test_jog_is_ignored_during_estop(workflow):
     workflow.controller.inject_fault("program_error")
     workflow.poll()

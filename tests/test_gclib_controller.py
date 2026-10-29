@@ -43,6 +43,37 @@ def test_download_firmware_without_open_connection_raises_command_error():
         controller.download_firmware('MG "hello"')
 
 
+class _FakeGalil:
+    """Stands in for the opened gclib handle: records every command and
+    answers like the real controllers did (padded integers, \"\\r\\n\" free)."""
+
+    def __init__(self, replies: dict[str, str]):
+        self.replies = replies
+        self.commands: list[str] = []
+
+    def GCommand(self, command: str) -> str:
+        self.commands.append(command)
+        return self.replies[command]
+
+
+def test_get_position_reads_the_commanded_position_not_the_encoder():
+    """Regression: the readout used TPX/TPY, which stayed 0 on both real
+    machines (open-loop steppers, nothing counting on the encoder input)
+    while RPX/RPY held the real position."""
+    controller = GclibMotionController()
+    controller._g = _FakeGalil({"TPX": "0", "TPY": "0", "RPX": "58619", "RPY": "6821"})
+
+    assert controller.get_position() == (58619.0, 6821.0)
+    assert controller._g.commands == ["RPX", "RPY"]
+
+
+def test_get_position_handles_negative_and_padded_replies():
+    controller = GclibMotionController()
+    controller._g = _FakeGalil({"RPX": "  -1200", "RPY": "       0"})
+
+    assert controller.get_position() == (-1200.0, 0.0)
+
+
 def test_get_variable_without_open_connection_raises_command_error():
     controller = GclibMotionController()
     with pytest.raises(MotionControllerCommandError):

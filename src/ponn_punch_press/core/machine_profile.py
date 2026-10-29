@@ -8,6 +8,12 @@ from dataclasses import asdict, dataclass
 DEFAULT_RECIPE_PATH = "C:\\"
 DEFAULT_X_LEAD = 0.5
 DEFAULT_Y_LEAD = 0.5
+# Pulses the controller must send per motor revolution: full steps per rev x
+# microstepping. Both machines' drives are set to 2000 steps per motor
+# revolution (200-step motors x 1/10 microstepping). Replaces the legacy
+# hardcoded 16384, which was the encoder resolution from the servo days and
+# ~8x too high for these steppers.
+DEFAULT_STEPS_PER_REV = 2000
 DEFAULT_MAX_X_SPEED = 1100.0
 DEFAULT_MAX_Y_SPEED = 915.0
 DEFAULT_X_JOG_SPEED = 80.0
@@ -28,6 +34,7 @@ class MachineProfile:
     recipe_path: str = DEFAULT_RECIPE_PATH
     x_lead: float = DEFAULT_X_LEAD
     y_lead: float = DEFAULT_Y_LEAD
+    steps_per_rev: int = DEFAULT_STEPS_PER_REV
     max_x_speed: float = DEFAULT_MAX_X_SPEED
     max_y_speed: float = DEFAULT_MAX_Y_SPEED
     x_jog_speed: float = DEFAULT_X_JOG_SPEED

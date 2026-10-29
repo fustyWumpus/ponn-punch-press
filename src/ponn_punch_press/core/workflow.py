@@ -195,8 +195,8 @@ class PunchPressWorkflow:
         """Port of PollTimer_Tick: position/counter/homed readback and fault
         detection."""
         x_counts, y_counts = self.controller.get_position()
-        x_inches = counts_to_inches(x_counts, self.profile.x_lead)
-        y_inches = counts_to_inches(y_counts, self.profile.y_lead)
+        x_inches = counts_to_inches(x_counts, self.profile.x_lead, self.profile.steps_per_rev)
+        y_inches = counts_to_inches(y_counts, self.profile.y_lead, self.profile.steps_per_rev)
 
         dmc_count = int(self.controller.get_variable("COUNT"))
         if dmc_count == 0 and self._vb_count is None:

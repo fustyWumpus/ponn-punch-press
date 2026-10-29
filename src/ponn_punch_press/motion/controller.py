@@ -74,7 +74,8 @@ class MotionController(Protocol):
         ...
 
     def get_position(self) -> tuple[float, float]:
-        """Return the current (X, Y) position in encoder counts (TPX/TPY)."""
+        """Return the current (X, Y) position in controller counts (step
+        pulses): the commanded position, RPX/RPY."""
         ...
 
     def jog(self, axis: Axis, speed: float) -> None:

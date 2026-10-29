@@ -33,6 +33,43 @@ def test_save_then_load_round_trips(tmp_path):
     assert loaded == profile
 
 
+def test_steps_per_rev_round_trips(tmp_path):
+    store = MachineProfileStore(base_dir=tmp_path)
+    store.save(MachineProfile(name="Machine 1", ip_address="192.168.1.10", steps_per_rev=3200))
+    assert store.load("Machine 1").steps_per_rev == 3200
+
+
+def test_profile_saved_before_steps_per_rev_existed_loads_with_the_default(tmp_path):
+    """Profiles already on disk (written by earlier versions) have no
+    steps_per_rev key; they must load cleanly and pick up 2000."""
+    import json
+
+    store = MachineProfileStore(base_dir=tmp_path)
+    store.machines_dir.mkdir(parents=True)
+    (store.machines_dir / "Machine_1.json").write_text(
+        json.dumps(
+            {
+                "name": "Machine 1",
+                "ip_address": "192.168.1.58",
+                "recipe_path": "C:\\ProgramData\\PonnPunchPress\\recipes\\machine_1",
+                "x_lead": 0.5,
+                "y_lead": 0.5,
+                "max_x_speed": 1100.0,
+                "max_y_speed": 915.0,
+                "x_jog_speed": 6.0,
+                "y_jog_speed": 6.0,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    loaded = store.load("Machine 1")
+
+    assert loaded.steps_per_rev == 2000
+    assert loaded.x_jog_speed == 6.0  # the rest of the saved settings are untouched
+    assert loaded.ip_address == "192.168.1.58"
+
+
 def test_load_missing_profile_returns_none(tmp_path):
     store = MachineProfileStore(base_dir=tmp_path)
     assert store.load("Nonexistent") is None

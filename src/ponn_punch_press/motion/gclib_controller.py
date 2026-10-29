@@ -144,8 +144,13 @@ class GclibMotionController:
         return float(self.execute(command).strip())
 
     def get_position(self) -> tuple[float, float]:
-        x = float(self.execute("TPX").strip())
-        y = float(self.execute("TPY").strip())
+        # RPX/RPY (commanded position, in step pulses), not TPX/TPY. TP reads
+        # the main encoder, and these are open-loop stepper axes with nothing
+        # counting there -- confirmed on both real controllers: TP stayed 0
+        # while RP held the real position (58619 / 34497) after jogging. RP is
+        # what the homing routine's DP0,0 zeroes and what every move advances.
+        x = float(self.execute("RPX").strip())
+        y = float(self.execute("RPY").strip())
         return (x, y)
 
     def jog(self, axis: Axis, speed: float) -> None:

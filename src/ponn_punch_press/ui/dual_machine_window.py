@@ -35,6 +35,10 @@ QPushButton {
     padding: 5px 12px;
     border-radius: 4px;
 }
+QPushButton[compact="true"] {
+    padding: 3px 6px;
+    font-size: 11pt;
+}
 QPushButton#primaryButton {
     background-color: #2f6fed;
     color: white;
