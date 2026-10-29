@@ -156,6 +156,46 @@ def test_no_vacuum_duration_inputs_but_the_programs_values_are_kept(window):
     assert (panel._recipe_from_form("x.txt").vacuum_on, panel._recipe_from_form("x.txt").vacuum_off) == (0, 0)
 
 
+def test_the_status_line_keeps_saying_downloaded_after_homing(window):
+    panel = window.panel_machine_1
+    panel.recipe_list.setCurrentRow(0)
+    panel._on_download_recipe()
+    assert panel.download_status_label.text() == "Program downloaded"
+
+    panel._on_home()
+    panel.workflow.controller.advance(2.0)
+    panel._on_poll_tick()
+
+    assert panel.download_status_label.text() == "Program downloaded"
+
+
+def test_comments_box_is_never_shorter_than_five_lines(window, qapp):
+    for panel in (window.panel_machine_1, window.panel_machine_2):
+        edit = panel.comments_edit
+        line = edit.fontMetrics().lineSpacing()
+        chrome = 2 * edit.frameWidth() + 2 * int(edit.document().documentMargin())
+        assert edit.minimumSizeHint().height() >= 5 * line + chrome
+
+    # ...also after the window shrinks the text to fit a small screen.
+    window.fit_text_to_size(10_000, 1)  # nothing fits: smallest text
+    edit = window.panel_machine_2.comments_edit
+    line = edit.fontMetrics().lineSpacing()
+    chrome = 2 * edit.frameWidth() + 2 * int(edit.document().documentMargin())
+    assert edit.minimumSizeHint().height() >= 5 * line + chrome
+
+
+def test_spare_window_height_goes_to_the_comments_box_not_the_motion_section(window, qapp):
+    window.show()
+    window.resize(window.minimumSizeHint().width(), window.minimumSizeHint().height() + 200)
+    QTest.qWait(100)
+    panel = window.panel_machine_1
+    motion = panel.home_button.parentWidget()
+
+    assert motion.height() == motion.sizeHint().height()  # Motion Control stays compact
+    edit = panel.comments_edit
+    assert edit.height() > edit.minimumSizeHint().height() + 100  # ...the comments box got the 200 px
+
+
 def test_machine_title_is_a_compact_ten_point_label(window):
     for panel in (window.panel_machine_1, window.panel_machine_2):
         assert panel.machine_name_label.font().pointSizeF() == pytest.approx(10.0)

@@ -118,6 +118,21 @@ def test_download_recipe_rejected_when_controller_running(workflow, sample_recip
     assert workflow.recipe_downloaded is False
 
 
+def test_homing_does_not_reset_the_program_downloaded_flag(workflow, sample_recipe):
+    """#HOMEALL leaves the downloaded program variables alone and jumps back
+    to #MAINLP, so "Program downloaded" must survive homing."""
+    workflow.download_recipe(sample_recipe)
+    assert workflow.recipe_downloaded is True
+
+    workflow.home()
+    assert workflow.recipe_downloaded is True
+
+    workflow.controller.advance(2.0)  # homing finishes
+    workflow.poll()
+    assert workflow.recipe_downloaded is True
+    assert workflow.controller.get_variable("ROWS") == 2  # and the controller really still has it
+
+
 def test_home_sets_homing_state_until_poll_observes_homed(workflow):
     workflow.home()
     assert workflow.state is WorkflowState.HOMING

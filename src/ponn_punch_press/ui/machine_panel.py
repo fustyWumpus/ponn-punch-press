@@ -94,6 +94,29 @@ def _make_arrow_icon(rotation_degrees: float, size: int = 64, color: str = "#fff
     return QIcon(pixmap)
 
 
+_COMMENTS_MIN_LINES = 5
+
+
+class _CommentsEdit(QPlainTextEdit):
+    """Comments box that is never shorter than _COMMENTS_MIN_LINES lines of
+    text. Measured from the font in use right now, so it stays four lines when
+    the window shrinks the text to fit a small screen."""
+
+    def _lines_height(self) -> int:
+        chrome = 2 * self.frameWidth() + 2 * int(self.document().documentMargin())
+        return _COMMENTS_MIN_LINES * self.fontMetrics().lineSpacing() + chrome
+
+    def minimumSizeHint(self) -> QSize:  # noqa: N802 (Qt override)
+        hint = super().minimumSizeHint()
+        hint.setHeight(max(hint.height(), self._lines_height()))
+        return hint
+
+    def sizeHint(self) -> QSize:  # noqa: N802 (Qt override)
+        hint = super().sizeHint()
+        hint.setHeight(self._lines_height())  # compact by default; it grows only with spare room
+        return hint
+
+
 class MachinePanel(QWidget):
     """Port of MainScreen.vb for a single machine, as an embeddable widget so
     two of these can run side by side in DualMachineWindow (one machine no
@@ -201,10 +224,12 @@ class MachinePanel(QWidget):
         upper_row = QHBoxLayout()
         upper_row.addWidget(self._build_recipe_panel(), stretch=1)
         upper_row.addWidget(self._build_pattern_panel(), stretch=3)
-        root.addLayout(upper_row, stretch=3)
+        root.addLayout(upper_row, stretch=1)
         root.addSpacing(3)
 
-        root.addWidget(self._build_motion_panel(), stretch=2)
+        # No stretch: Motion Control stays as compact as its contents, and any
+        # spare window height goes to the programs list / comments box above.
+        root.addWidget(self._build_motion_panel(), stretch=0)
 
     def _build_header(self) -> QWidget:
         # No fixed pixel height here -- a hardcoded guess doesn't account for
@@ -265,11 +290,18 @@ class MachinePanel(QWidget):
         # Spans columns 0-1 only (not the full 0-3), so its right edge lines
         # up with every other field's right edge instead of stretching to
         # match the wider Rows/Columns row.
-        layout.addWidget(QLabel("Comments:"), row, 0, 1, 2)
+        self.comments_label = QLabel("Comments:")
+        # Trim the font's built-in leading above and below this one-line label.
+        self.comments_label.setContentsMargins(0, -2, 0, -2)
+        layout.addWidget(self.comments_label, row, 0, 1, 2)
         row += 1
-        self.comments_edit = QPlainTextEdit()
-        self.comments_edit.setMaximumHeight(60)
+        # The comments box takes whatever spare height the window has (its row
+        # is the only one that stretches). Before, it was capped at 60 px, so
+        # the spare height went into the label's row instead and showed up as
+        # a band of white space above and below "Comments:".
+        self.comments_edit = _CommentsEdit()
         layout.addWidget(self.comments_edit, row, 0, 1, 2)
+        layout.setRowStretch(row, 1)
         row += 1
 
         layout.addWidget(QLabel("Layout:"), row, 0)
@@ -337,12 +369,12 @@ class MachinePanel(QWidget):
 
     def _build_motion_panel(self) -> QGroupBox:
         box = QGroupBox("Motion Control")
-        box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        box.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Maximum)
         outer = QHBoxLayout(box)
         outer.setContentsMargins(*_GROUP_MARGINS)
 
         left_column = QVBoxLayout()
-        left_column.setSpacing(4)
+        left_column.setSpacing(2)
         outer.addLayout(left_column, stretch=1)
 
         self.home_button = QPushButton("Home Axes")
@@ -371,7 +403,7 @@ class MachinePanel(QWidget):
         # jog arrows -- the jog buttons are sized down to roughly match this
         # column's natural height instead of dictating the row's height.
         right_column = QVBoxLayout()
-        right_column.setSpacing(4)
+        right_column.setSpacing(2)
         outer.addLayout(right_column, stretch=1)
 
         counter_row = QHBoxLayout()
@@ -418,7 +450,7 @@ class MachinePanel(QWidget):
         container = QWidget()
         jog_column = QVBoxLayout(container)
         jog_column.setContentsMargins(0, 0, 0, 0)
-        jog_column.setSpacing(3)
+        jog_column.setSpacing(2)
 
         self.jog_forward_button = QPushButton()  # forward = Y+
         self.jog_back_button = QPushButton()  # back = Y-

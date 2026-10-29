@@ -191,7 +191,9 @@ class PunchPressWorkflow:
             return
         self.controller.execute("HX0;XQ#HOMEALL")
         self._homing_requested = True
-        self.recipe_downloaded = False
+        # recipe_downloaded is deliberately left alone: #HOMEALL only resets
+        # ROW/COL/VACCNT/CYCCOUNT, never the downloaded program variables
+        # (STARTX, ROWS, ...), and it ends by jumping back to #MAINLP.
 
     def restart(self) -> None:
         """Port of RestartButton_Click: clear E-stop and reinitialize."""
